@@ -149,7 +149,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-ink-950/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-(--scrim) backdrop-blur-sm"
             aria-hidden="true"
           />
 
@@ -160,15 +160,15 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             exit={{ opacity: 0, scale: 0.97, y: -8 }}
             transition={{ duration: 0.15 }}
             ref={containerRef}
-            className="relative w-full max-w-2xl overflow-hidden rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] shadow-2xl text-white"
+            className="relative w-full max-w-2xl overflow-hidden rounded-xl border border-(--line) bg-(--surface) shadow-2xl text-(--text-1)"
             role="combobox"
             aria-expanded={isOpen}
             aria-owns="cmd-listbox"
             aria-haspopup="listbox"
           >
             {/* Input Bar */}
-            <div className="flex items-center border-b border-[#1A1A1A] px-4 py-3.5">
-              <Search className="h-5 w-5 text-[#71717A] mr-3 shrink-0" />
+            <div className="flex items-center border-b border-(--line) px-4 py-3.5">
+              <Search className="h-5 w-5 text-(--text-muted) mr-3 shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
@@ -178,13 +178,13 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   setSearch(e.target.value);
                   setSelectedIndex(0);
                 }}
-                className="w-full bg-transparent text-sm text-[#FAFAFA] placeholder-[#71717A] focus:outline-none"
+                className="w-full bg-transparent text-sm text-(--text-1) placeholder-(--text-muted) focus:outline-none"
                 aria-autocomplete="list"
                 aria-controls="cmd-listbox"
               />
               <button
                 onClick={onClose}
-                className="p-1 rounded-md text-[#71717A] hover:text-white hover:bg-[#1A1A1A] transition"
+                className="p-1 rounded-md text-(--text-muted) hover:text-(--text-1) hover:bg-(--surface-3) transition"
                 aria-label="Close search"
               >
                 <X className="h-4 w-4" />
@@ -199,8 +199,8 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
               aria-label="Suggestions"
             >
               {filteredCommands.length === 0 ? (
-                <div className="py-12 text-center text-sm text-[#71717A]">
-                  No commands or projects found matching "<span className="font-semibold text-[#A1A1AA]">{search}</span>"
+                <div className="py-12 text-center text-sm text-(--text-muted)">
+                  No commands or projects found matching "<span className="font-semibold text-(--text-mid)">{search}</span>"
                 </div>
               ) : (
                 filteredCommands.map((cmd, idx) => {
@@ -215,22 +215,22 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`flex items-center justify-between px-3.5 py-3 rounded-lg cursor-pointer transition-all ${
                         isSelected 
-                          ? 'bg-[#1A1A1A] text-white border border-[#27272A]' 
-                          : 'text-[#A1A1AA] hover:bg-[#111] hover:text-white'
+                          ? 'bg-(--surface-3) text-(--text-1) border border-(--line-strong)' 
+                          : 'text-(--text-mid) hover:bg-(--surface-2) hover:text-(--text-1)'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`p-1.5 rounded-md ${isSelected ? 'bg-white text-black shadow-sm' : 'bg-[#111] text-[#71717A]'}`}>
+                        <div className={`p-1.5 rounded-md ${isSelected ? 'bg-(--cta-bg) text-(--cta-fg) shadow-sm' : 'bg-(--surface-2) text-(--text-muted)'}`}>
                           <Icon className="h-4 w-4" />
                         </div>
                         <div className="text-left">
-                          <div className={`text-[9px] font-mono tracking-wider uppercase mb-0.5 text-[#71717A]`}>
+                          <div className={`text-[9px] font-mono tracking-wider uppercase mb-0.5 text-(--text-muted)`}>
                             {cmd.category}
                           </div>
-                          <div className="text-sm font-semibold text-white">
+                          <div className="text-sm font-semibold text-(--text-1)">
                             {cmd.title}
                           </div>
-                          <div className="text-xs text-[#A1A1AA] line-clamp-1">
+                          <div className="text-xs text-(--text-mid) line-clamp-1">
                             {cmd.subtitle}
                           </div>
                         </div>
@@ -238,7 +238,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
                       {/* Enter Indicator */}
                       {isSelected && (
-                        <kbd className="hidden sm:flex items-center gap-1 font-mono text-[10px] text-[#A1A1AA] bg-black border border-[#27272A] px-2 py-0.5 rounded shadow-sm">
+                        <kbd className="hidden sm:flex items-center gap-1 font-mono text-[10px] text-(--text-mid) bg-(--surface-2) border border-(--line-strong) px-2 py-0.5 rounded shadow-sm">
                           <span>Enter</span>
                           <CornerDownLeft className="h-2.5 w-2.5" />
                         </kbd>
@@ -250,11 +250,11 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
             </div>
 
             {/* Footer Help info */}
-            <div className="flex justify-between items-center bg-black px-4 py-2 text-[10px] text-[#71717A] border-t border-[#1A1A1A] font-mono">
+            <div className="flex justify-between items-center bg-(--surface-2) px-4 py-2 text-[10px] text-(--text-muted) border-t border-(--line) font-mono">
               <div className="flex gap-3">
-                <span><kbd className="bg-[#1A1A1A] border border-[#27272A] rounded px-1 text-[9px] text-[#A1A1AA] shadow-sm">↑↓</kbd> Navigate</span>
-                <span><kbd className="bg-[#1A1A1A] border border-[#27272A] rounded px-1 text-[9px] text-[#A1A1AA] shadow-sm">Enter</kbd> Select</span>
-                <span><kbd className="bg-[#1A1A1A] border border-[#27272A] rounded px-1 text-[9px] text-[#A1A1AA] shadow-sm">Esc</kbd> Close</span>
+                <span><kbd className="bg-(--surface-3) border border-(--line-strong) rounded px-1 text-[9px] text-(--text-mid) shadow-sm">↑↓</kbd> Navigate</span>
+                <span><kbd className="bg-(--surface-3) border border-(--line-strong) rounded px-1 text-[9px] text-(--text-mid) shadow-sm">Enter</kbd> Select</span>
+                <span><kbd className="bg-(--surface-3) border border-(--line-strong) rounded px-1 text-[9px] text-(--text-mid) shadow-sm">Esc</kbd> Close</span>
               </div>
               <div className="hidden sm:block">
                 <span>DEVELOPER PORTFOLIO CLI</span>

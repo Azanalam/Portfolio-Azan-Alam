@@ -69,20 +69,20 @@ export default function HeroManager({ data, onUpdate }: HeroManagerProps) {
 
   return (
     <div className="space-y-8 font-sans">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1A1A1A] pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-(--line) pb-5">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold text-(--text-1) flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-emerald-500" />
             <span>Hero Section Specifications</span>
           </h2>
-          <p className="text-xs text-[#71717A] mt-1 uppercase font-mono tracking-wider">
+          <p className="text-xs text-(--text-muted) mt-1 uppercase font-mono tracking-wider">
             Govern primary headings, availability indexes, Call-to-Actions, and active skill-telemetry cards.
           </p>
         </div>
         <button
           onClick={handleSaveHero}
           disabled={saving}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-(--cta-fg) font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer disabled:opacity-50"
         >
           {saving ? (
             <span>Saving Specifications...</span>
@@ -103,66 +103,66 @@ export default function HeroManager({ data, onUpdate }: HeroManagerProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Principal Spec Details */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl p-6 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono border-b border-[#1A1A1A] pb-2 text-emerald-500 flex items-center gap-2">
+          <div className="bg-(--surface) border border-(--line) rounded-xl p-6 space-y-4">
+            <h3 className="text-sm font-bold text-(--text-1) uppercase tracking-wider font-mono border-b border-(--line) pb-2 text-emerald-500 flex items-center gap-2">
               <UserCheck className="h-4 w-4" />
               <span>Core Copywriting Specs</span>
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider block">Developer Name</label>
+                <label className="text-[10px] font-mono font-bold text-(--text-muted) uppercase tracking-wider block">Developer Name</label>
                 <input
                   type="text"
                   value={hero.name}
                   onChange={(e) => setHero({ ...hero, name: e.target.value })}
-                  className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
+                  className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider block">Job Title Specs</label>
+                <label className="text-[10px] font-mono font-bold text-(--text-muted) uppercase tracking-wider block">Job Title Specs</label>
                 <input
                   type="text"
                   value={hero.jobTitle}
                   onChange={(e) => setHero({ ...hero, jobTitle: e.target.value })}
-                  className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
+                  className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider block">Homepage Headline Heading</label>
+              <label className="text-[10px] font-mono font-bold text-(--text-muted) uppercase tracking-wider block">Homepage Headline Heading</label>
               <input
                 type="text"
                 value={hero.headline}
                 onChange={(e) => setHero({ ...hero, headline: e.target.value })}
-                className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
+                className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider block">Principal Headline Subtext Description</label>
+              <label className="text-[10px] font-mono font-bold text-(--text-muted) uppercase tracking-wider block">Principal Headline Subtext Description</label>
               <textarea
                 value={hero.description}
                 rows={4}
                 onChange={(e) => setHero({ ...hero, description: e.target.value })}
-                className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans resize-none"
+                className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors font-sans resize-none"
               />
             </div>
           </div>
 
           {/* Status badge controller */}
-          <div className="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl p-6 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono border-b border-[#1A1A1A] pb-2 text-emerald-500 flex items-center gap-2">
+          <div className="bg-(--surface) border border-(--line) rounded-xl p-6 space-y-4">
+            <h3 className="text-sm font-bold text-(--text-1) uppercase tracking-wider font-mono border-b border-(--line) pb-2 text-emerald-500 flex items-center gap-2">
               <Play className="h-4 w-4" />
               <span>Availability Badge Controller</span>
             </h3>
 
-            <div className="flex items-center gap-6 p-4 bg-[#111] border border-[#1A1A1A] rounded-xl">
+            <div className="flex items-center gap-6 p-4 bg-(--surface-2) border border-(--line) rounded-xl">
               <div className="space-y-0.5">
-                <span className="text-xs font-bold text-white block">Status Index Mode</span>
-                <span className="text-[10px] text-[#71717A] block">Determines the active green-glow indicator toggle.</span>
+                <span className="text-xs font-bold text-(--text-1) block">Status Index Mode</span>
+                <span className="text-[10px] text-(--text-muted) block">Determines the active green-glow indicator toggle.</span>
               </div>
               <label className="relative inline-flex items-center cursor-pointer select-none">
                 <input
@@ -171,17 +171,17 @@ export default function HeroManager({ data, onUpdate }: HeroManagerProps) {
                   onChange={(e) => setHero({ ...hero, availability: e.target.checked })}
                   className="sr-only peer"
                 />
-                <div className="w-11 h-6 bg-zinc-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-neutral-400 after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600 peer-checked:after:bg-white" />
+                <div className="w-11 h-6 bg-(--surface-3) peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-neutral-400 null after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600 peer-checked:after:bg-(--cta-bg)" />
               </label>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[10px] font-mono font-bold text-[#71717A] uppercase tracking-wider block">Status Text Phrase (e.g. "Available", "Focus Mode")</label>
+              <label className="text-[10px] font-mono font-bold text-(--text-muted) uppercase tracking-wider block">Status Text Phrase (e.g. "Available", "Focus Mode")</label>
               <input
                 type="text"
                 value={hero.statusBadge}
                 onChange={(e) => setHero({ ...hero, statusBadge: e.target.value })}
-                className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors"
+                className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-emerald-500 transition-colors"
               />
             </div>
           </div>
@@ -189,25 +189,25 @@ export default function HeroManager({ data, onUpdate }: HeroManagerProps) {
 
         {/* Expertise Specifications (Bento Grid cards stats) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl p-6 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono border-b border-[#1A1A1A] pb-2 text-emerald-500 flex items-center gap-2">
+          <div className="bg-(--surface) border border-(--line) rounded-xl p-6 space-y-4">
+            <h3 className="text-sm font-bold text-(--text-1) uppercase tracking-wider font-mono border-b border-(--line) pb-2 text-emerald-500 flex items-center gap-2">
               <span>Technical Expertise Deck</span>
             </h3>
 
-            <p className="text-xs text-[#71717A] leading-relaxed">
+            <p className="text-xs text-(--text-muted) leading-relaxed">
               These are 4 spec lines rendered on the secondary Bento grid module. Re-configure the headings and stats labels to match your career stack.
             </p>
 
             <div className="space-y-2.5">
               {hero.statistics.map((stat, idx) => (
-                <div key={idx} className="flex items-center justify-between p-2.5 bg-[#111] border border-[#1A1A1A] rounded-lg">
+                <div key={idx} className="flex items-center justify-between p-2.5 bg-(--surface-2) border border-(--line) rounded-lg">
                   <div className="space-y-0.5">
-                    <span className="text-xs text-white block font-bold">{stat.label}</span>
+                    <span className="text-xs text-(--text-1) block font-bold">{stat.label}</span>
                     <span className="text-[10px] text-emerald-400 block font-mono">{stat.value}</span>
                   </div>
                   <button
                     onClick={() => removeStatistic(idx)}
-                    className="p-1 text-[#71717A] hover:text-red-400 transition cursor-pointer"
+                    className="p-1 text-(--text-muted) hover:text-red-400 transition cursor-pointer"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
@@ -216,29 +216,29 @@ export default function HeroManager({ data, onUpdate }: HeroManagerProps) {
             </div>
 
             {/* Add Stat Mini Form */}
-            <div className="p-3 bg-[#111] border border-[#1A1A1A] rounded-xl space-y-3 mt-4">
-              <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-[#71717A]">Add Technical Stat Row</div>
+            <div className="p-3 bg-(--surface-2) border border-(--line) rounded-xl space-y-3 mt-4">
+              <div className="text-[9px] font-mono font-bold uppercase tracking-widest text-(--text-muted)">Add Technical Stat Row</div>
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="text"
                   placeholder="Heading (e.g. Cloud Infra)"
                   value={newStatLabel}
                   onChange={(e) => setNewStatLabel(e.target.value)}
-                  className="bg-[#0A0A0A] border border-[#1A1A1A] text-white rounded px-2.5 py-1.5 text-[11px] focus:outline-none focus:border-emerald-500"
+                  className="bg-(--surface) border border-(--line) text-(--text-1) rounded px-2.5 py-1.5 text-[11px] focus:outline-none focus:border-emerald-500"
                 />
                 <input
                   type="text"
                   placeholder="Value (e.g. AWS, K8s)"
                   value={newStatValue}
                   onChange={(e) => setNewStatValue(e.target.value)}
-                  className="bg-[#0A0A0A] border border-[#1A1A1A] text-white rounded px-2.5 py-1.5 text-[11px] focus:outline-none focus:border-emerald-500"
+                  className="bg-(--surface) border border-(--line) text-(--text-1) rounded px-2.5 py-1.5 text-[11px] focus:outline-none focus:border-emerald-500"
                 />
               </div>
               <button
                 type="button"
                 onClick={addStatistic}
                 disabled={hero.statistics.length >= 4}
-                className="w-full inline-flex items-center justify-center gap-1 py-1.5 bg-white hover:bg-neutral-100 disabled:bg-neutral-900 disabled:text-neutral-700 text-black font-bold text-[10px] uppercase tracking-wider rounded transition cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-1 py-1.5 bg-(--cta-bg) hover:bg-(--cta-hover) disabled:bg-(--surface-3) disabled:text-(--text-mid) text-(--cta-fg) font-bold text-[10px] uppercase tracking-wider rounded transition cursor-pointer"
               >
                 <Plus className="h-3 w-3" />
                 <span>Append Stat Row ({hero.statistics.length}/4)</span>

@@ -54,7 +54,7 @@ export default function App() {
 
   if (isAdminView) {
     return (
-      <div className="min-h-screen bg-[#070707] text-[#FAFAFA] font-sans selection:bg-white selection:text-black admin-mode">
+      <div className="min-h-screen bg-(--bg) text-(--text-1) font-sans selection:bg-(--cta-bg) selection:text-(--cta-fg) admin-mode">
         <AnimatePresence mode="wait">
           <motion.div
             key={view}
@@ -71,7 +71,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#FAFAFA] font-sans selection:bg-white selection:text-[#050505] flex flex-col justify-between">
+    <div className="min-h-screen bg-(--bg) text-(--text-1) font-sans selection:bg-(--cta-bg) selection:text-(--cta-fg) flex flex-col justify-between">
       
       {/* Top Header Navigation */}
       <Navigation onOpenCommandPalette={() => setIsCmdOpen(true)} />
@@ -95,30 +95,30 @@ export default function App() {
       </main>
 
       {/* Minimal Editorial Footer */}
-      <footer className="border-t border-[#1A1A1A] bg-[#050505] py-12 mt-20">
+      <footer className="border-t border-(--line) bg-(--bg) py-12 mt-20">
         <div className="mx-auto max-w-7xl px-6 md:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           
           {/* Copyright signature */}
           <div className="space-y-1.5">
-            <div className="font-mono text-xs font-semibold text-white">
+            <div className="font-mono text-xs font-semibold text-(--text-1)">
               {data?.settings?.copyright || 'DEVELOPER.PORTFOLIO // v1.2.0'}
             </div>
-            <p className="text-[10px] text-[#52525B] uppercase tracking-tighter font-sans">
+            <p className="text-[10px] text-(--text-faint) uppercase tracking-tighter font-sans">
               {data?.settings?.footerText || 'Handcrafted with precision. Built for extreme resilience & technical compliance.'}
             </p>
           </div>
 
           {/* Quick links & Time telemetry */}
-          <div className="flex flex-col sm:items-end gap-3 font-mono text-[11px] text-[#71717A]">
+          <div className="flex flex-col sm:items-end gap-3 font-mono text-[11px] text-(--text-muted)">
             <div className="flex flex-wrap gap-4">
-              <button onClick={() => navigate('/')} className="hover:text-white transition cursor-pointer">Home</button>
-              <button onClick={() => navigate('/services')} className="hover:text-white transition cursor-pointer">Services</button>
-              <button onClick={() => navigate('/projects')} className="hover:text-white transition cursor-pointer">Projects</button>
-              <button onClick={() => navigate('/skills')} className="hover:text-white transition cursor-pointer">Skills</button>
-              <button onClick={() => navigate('/about')} className="hover:text-white transition cursor-pointer">About</button>
-              <button onClick={() => navigate('/contact')} className="hover:text-white transition cursor-pointer">Contact</button>
+              <button onClick={() => navigate('/')} className="hover:text-(--text-1) transition cursor-pointer">Home</button>
+              <button onClick={() => navigate('/services')} className="hover:text-(--text-1) transition cursor-pointer">Services</button>
+              <button onClick={() => navigate('/projects')} className="hover:text-(--text-1) transition cursor-pointer">Projects</button>
+              <button onClick={() => navigate('/skills')} className="hover:text-(--text-1) transition cursor-pointer">Skills</button>
+              <button onClick={() => navigate('/about')} className="hover:text-(--text-1) transition cursor-pointer">About</button>
+              <button onClick={() => navigate('/contact')} className="hover:text-(--text-1) transition cursor-pointer">Contact</button>
             </div>
-            <div className="text-[#52525B]">
+            <div className="text-(--text-faint)">
               SYSTEM_TIME: {new Date().getFullYear()}-07-15 // {data?.settings?.timezone || 'UTC-8'}
             </div>
           </div>

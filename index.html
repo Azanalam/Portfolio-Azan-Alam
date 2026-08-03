@@ -7,6 +7,16 @@
     <script>
       (function () {
         try {
+          var t = localStorage.getItem('portfolio-theme');
+          if (t === 'dark' || t === 'light') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script>
+      (function () {
+        try {
           var currentFetch = typeof window !== 'undefined' ? window.fetch : null;
           if (currentFetch) {
             var descriptor = {

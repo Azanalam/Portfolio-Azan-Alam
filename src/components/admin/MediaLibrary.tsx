@@ -166,12 +166,12 @@ export default function MediaLibrary() {
 
   return (
     <div className="space-y-8 font-sans">
-      <div className="border-b border-[#1A1A1A] pb-5">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
+      <div className="border-b border-(--line) pb-5">
+        <h2 className="text-xl font-bold text-(--text-1) flex items-center gap-2">
           <Image className="h-5 w-5 text-emerald-500" />
           <span>Interactive Media Library</span>
         </h2>
-        <p className="text-xs text-[#71717A] mt-1 uppercase font-mono tracking-wider">
+        <p className="text-xs text-(--text-muted) mt-1 uppercase font-mono tracking-wider">
           Upload, manage, copy static links, and delete assets for rich-content portfolio cards.
         </p>
       </div>
@@ -184,14 +184,14 @@ export default function MediaLibrary() {
       )}
 
       {/* Résumé Document Manager */}
-      <div className="p-5 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-5 rounded-xl border border-(--line) bg-(--surface) flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="p-3 rounded-xl bg-[#111] border border-[#1A1A1A] text-emerald-400 shrink-0">
+          <div className="p-3 rounded-xl bg-(--surface-2) border border-(--line) text-emerald-400 shrink-0">
             <FileText className="h-5 w-5" />
           </div>
           <div className="min-w-0">
-            <h3 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Résumé Document</h3>
-            <p className="text-[10px] text-[#71717A] mt-0.5 font-mono">
+            <h3 className="text-xs font-bold text-(--text-1) uppercase tracking-wider font-mono">Résumé Document</h3>
+            <p className="text-[10px] text-(--text-muted) mt-0.5 font-mono">
               {resumeUrl ? (
                 <a
                   href={resumeUrl}
@@ -212,7 +212,7 @@ export default function MediaLibrary() {
           {resumeUrl && (
             <button
               onClick={() => copyUrl(resumeUrl, 'resume')}
-              className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#111] hover:bg-neutral-900 text-[#A1A1AA] hover:text-white border border-[#1A1A1A] rounded text-[10px] uppercase font-bold tracking-wider transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 bg-(--surface-2) hover:bg-(--surface-3) text-(--text-mid) hover:text-(--text-1) border border-(--line) rounded text-[10px] uppercase font-bold tracking-wider transition cursor-pointer"
             >
               {copiedFilename === 'resume' ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
               <span>{copiedFilename === 'resume' ? 'Copied' : 'Copy Link'}</span>
@@ -230,7 +230,7 @@ export default function MediaLibrary() {
           <button
             onClick={() => resumeInputRef.current?.click()}
             disabled={resumeUploading}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-neutral-100 text-black font-bold text-[10px] uppercase tracking-wider rounded transition cursor-pointer disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-(--cta-bg) hover:bg-(--cta-hover) text-(--cta-fg) font-bold text-[10px] uppercase tracking-wider rounded transition cursor-pointer disabled:opacity-50"
           >
             <Upload className="h-3 w-3" />
             <span>{resumeUploading ? 'Uploading...' : resumeUrl ? 'Replace Résumé' : 'Upload Résumé'}</span>
@@ -245,10 +245,10 @@ export default function MediaLibrary() {
         onDragLeave={handleDrag}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`border-2 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center gap-3 transition-all cursor-pointer bg-[#0A0A0A] ${
+        className={`border-2 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center gap-3 transition-all cursor-pointer bg-(--surface) ${
           dragActive
             ? 'border-emerald-500 bg-emerald-950/10'
-            : 'border-[#1A1A1A] hover:border-[#222]'
+            : 'border-(--line) hover:border-(--line-strong)'
         }`}
       >
         <input
@@ -259,7 +259,7 @@ export default function MediaLibrary() {
           accept="image/*,application/pdf"
         />
 
-        <div className="h-12 w-12 rounded-xl bg-[#111] border border-[#1A1A1A] flex items-center justify-center text-zinc-400">
+        <div className="h-12 w-12 rounded-xl bg-(--surface-2) border border-(--line) flex items-center justify-center text-(--text-mid)">
           {uploading ? (
             <svg className="animate-spin h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -271,10 +271,10 @@ export default function MediaLibrary() {
         </div>
 
         <div className="text-center space-y-1">
-          <p className="text-xs text-white font-bold">
+          <p className="text-xs text-(--text-1) font-bold">
             {uploading ? 'Synching file metadata...' : 'Drag & Drop files here, or click to browse'}
           </p>
-          <p className="text-[10px] text-[#71717A] uppercase font-mono tracking-wider">
+          <p className="text-[10px] text-(--text-muted) uppercase font-mono tracking-wider">
             Supports PNG, JPEG, SVG, WebP, and PDF (Max 10MB)
           </p>
         </div>
@@ -283,7 +283,7 @@ export default function MediaLibrary() {
       {/* Media Search & Grid Previews */}
       <div className="space-y-4">
         <div className="relative max-w-sm">
-          <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#52525B]">
+          <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-(--text-faint)">
             <Search className="h-3.5 w-3.5" />
           </span>
           <input
@@ -291,18 +291,18 @@ export default function MediaLibrary() {
             placeholder="Search assets..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#0A0A0A] border border-[#1A1A1A] text-white rounded-lg pl-9 pr-4 py-2 text-xs focus:outline-none focus:border-emerald-500"
+            className="w-full bg-(--surface) border border-(--line) text-(--text-1) rounded-lg pl-9 pr-4 py-2 text-xs focus:outline-none focus:border-emerald-500"
           />
         </div>
 
         {loading ? (
           <div className="flex gap-4 p-8">
-            <div className="animate-pulse bg-[#111] h-32 w-full rounded-xl" />
+            <div className="animate-pulse bg-(--surface-2) h-32 w-full rounded-xl" />
           </div>
         ) : filteredMedia.length === 0 ? (
-          <div className="text-center p-12 border border-[#1A1A1A] rounded-xl bg-[#0A0A0A]/30">
-            <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Grid Empty</span>
-            <p className="text-xs text-zinc-500">No matching media assets found.</p>
+          <div className="text-center p-12 border border-(--line) rounded-xl bg-(--surface)/30">
+            <span className="text-[10px] font-mono text-(--text-faint) uppercase tracking-widest block mb-1">Grid Empty</span>
+            <p className="text-xs text-(--text-muted)">No matching media assets found.</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -311,9 +311,9 @@ export default function MediaLibrary() {
               return (
                 <div
                   key={item.filename}
-                  className="bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl p-3 flex flex-col justify-between space-y-3 relative group"
+                  className="bg-(--surface) border border-(--line) rounded-xl p-3 flex flex-col justify-between space-y-3 relative group"
                 >
-                  <div className="aspect-square bg-[#111] rounded-lg overflow-hidden flex items-center justify-center border border-[#1A1A1A] relative">
+                  <div className="aspect-square bg-(--surface-2) rounded-lg overflow-hidden flex items-center justify-center border border-(--line) relative">
                     {isImage ? (
                       <img
                         src={item.url}
@@ -324,14 +324,14 @@ export default function MediaLibrary() {
                     ) : item.mimeType === 'application/pdf' ? (
                       <FileText className="h-8 w-8 text-emerald-400" />
                     ) : (
-                      <File className="h-8 w-8 text-zinc-500" />
+                      <File className="h-8 w-8 text-(--text-muted)" />
                     )}
 
                     {/* Quick action overlay */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                       <button
                         onClick={() => copyUrl(item.url, item.filename)}
-                        className="p-1.5 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-zinc-800 text-white transition cursor-pointer"
+                        className="p-1.5 bg-(--surface) border border-(--line) rounded-lg hover:bg-(--surface-3) text-(--text-1) transition cursor-pointer"
                         title="Copy direct URL"
                       >
                         {copiedFilename === item.filename ? (
@@ -342,7 +342,7 @@ export default function MediaLibrary() {
                       </button>
                       <button
                         onClick={() => handleDelete(item.filename)}
-                        className="p-1.5 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-red-950/40 text-zinc-400 hover:text-red-400 transition cursor-pointer"
+                        className="p-1.5 bg-(--surface) border border-(--line) rounded-lg hover:bg-red-950/40 text-(--text-mid) hover:text-red-400 transition cursor-pointer"
                         title="Delete asset"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -351,10 +351,10 @@ export default function MediaLibrary() {
                   </div>
 
                   <div className="space-y-0.5 min-w-0">
-                    <p className="text-[10px] text-white font-bold truncate" title={item.filename}>
+                    <p className="text-[10px] text-(--text-1) font-bold truncate" title={item.filename}>
                       {item.filename}
                     </p>
-                    <p className="text-[9px] font-mono text-[#71717A] uppercase">
+                    <p className="text-[9px] font-mono text-(--text-muted) uppercase">
                       {formatSize(item.size)}
                     </p>
                   </div>

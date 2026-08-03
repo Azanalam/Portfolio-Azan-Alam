@@ -52,10 +52,13 @@ export default function PortfolioProvider({ children }: PortfolioProviderProps) 
     localStorage.setItem('portfolio-theme', nextTheme);
   };
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  }, [currentTheme]);
+
   const getDynamicStyles = () => {
     if (!data) return '';
     const brandColor = data.settings?.brandColors?.primary || 'emerald';
-    const theme = currentTheme;
 
     // Map brand colors to hex
     const colorMap: Record<string, { primary: string; rgb: string; hover: string; dim: string }> = {
@@ -108,88 +111,6 @@ export default function PortfolioProvider({ children }: PortfolioProviderProps) 
         border-color: var(--primary-color) !important;
       }
     `;
-
-    if (theme === 'light') {
-      css += `
-        /* Light mode core overrides (excluding admin-mode elements) */
-        body:not(.admin-mode), 
-        .min-h-screen:not(.admin-mode) {
-          background-color: #fafafa !important;
-          color: #18181b !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .text-white, 
-        .min-h-screen:not(.admin-mode) .text-\\[\\#FAFAFA\\], 
-        .min-h-screen:not(.admin-mode) .text-zinc-100 {
-          color: #18181b !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .text-\\[\\#A1A1AA\\], 
-        .min-h-screen:not(.admin-mode) .text-zinc-400 {
-          color: #52525b !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .text-\\[\\#71717A\\], 
-        .min-h-screen:not(.admin-mode) .text-zinc-500 {
-          color: #71717a !important;
-        }
-        
-        /* Background overrides */
-        .min-h-screen:not(.admin-mode) .bg-black, 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#050505\\], 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#050505\\]\\/85, 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#050505\\]\\/95 {
-          background-color: #f4f4f5 !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#070707\\] {
-          background-color: #f4f4f5 !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#0a0a0a\\], 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#0A0A0A\\], 
-        .min-h-screen:not(.admin-mode) .bg-zinc-900 {
-          background-color: #ffffff !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#111111\\], 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#111\\] {
-          background-color: #f4f4f5 !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#1a1a1a\\], 
-        .min-h-screen:not(.admin-mode) .bg-\\[\\#1A1A1A\\], 
-        .min-h-screen:not(.admin-mode) .bg-zinc-800 {
-          background-color: #e4e4e7 !important;
-        }
-        
-        /* Border overrides */
-        .min-h-screen:not(.admin-mode) .border-\\[\\#1A1A1A\\], 
-        .min-h-screen:not(.admin-mode) .border-zinc-800 {
-          border-color: #e4e4e7 !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .border-\\[\\#27272A\\], 
-        .min-h-screen:not(.admin-mode) .border-zinc-700 {
-          border-color: #d4d4d8 !important;
-        }
-        
-        .min-h-screen:not(.admin-mode) .hover\\:border-\\[\\#27272A\\]:hover {
-          border-color: #a1a1aa !important;
-        }
-        
-        /* Command palette specific overrides */
-        .min-h-screen:not(.admin-mode) .bg-black\\/80 {
-          background-color: rgba(255, 255, 255, 0.8) !important;
-        }
-        
-        /* Selection colors */
-        ::selection {
-          background-color: var(--primary-color) !important;
-          color: #ffffff !important;
-        }
-      `;
-    }
 
     return css;
   };

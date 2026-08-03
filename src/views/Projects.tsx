@@ -77,7 +77,7 @@ export default function Projects({ onNavigate }: ProjectsProps) {
 
   if (loading) {
     return (
-      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-[#71717A] gap-2">
+      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-(--text-muted) gap-2">
         <svg className="animate-spin h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -96,26 +96,26 @@ export default function Projects({ onNavigate }: ProjectsProps) {
           <SlidersHorizontal className="h-4 w-4" />
           <span>PORTFOLIO INDEX</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-[#FAFAFA]">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-(--text-1)">
           Technical Works & Case Studies
         </h1>
-        <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl font-sans">
+        <p className="text-sm sm:text-base text-(--text-mid) max-w-2xl font-sans">
           Each project represents an original, deeply integrated system built to address performance, safety, or accessibility limits on the modern web platform.
         </p>
       </div>
 
       {/* Interactive Filter Toolbar (Bento Style) */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-xl border border-(--line) bg-(--surface)">
         
         {/* Search Input */}
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#71717A]" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-(--text-muted)" />
           <input
             type="text"
             placeholder="Search projects by stack, feature, or keyword..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-[#050505] border border-[#1A1A1A] rounded-lg text-sm text-white placeholder-[#52525B] focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-150"
+            className="w-full pl-9 pr-4 py-2 bg-(--bg) border border-(--line) rounded-lg text-sm text-(--text-1) placeholder-(--text-faint) focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-150"
             aria-label="Search cases"
           />
         </div>
@@ -130,8 +130,8 @@ export default function Projects({ onNavigate }: ProjectsProps) {
               onClick={() => setSelectedCategory(cat.value)}
               className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 cursor-pointer ${
                 selectedCategory === cat.value
-                  ? 'bg-white text-black border-white shadow-sm'
-                  : 'bg-[#1A1A1A] text-[#A1A1AA] border-[#27272A] hover:text-white hover:border-[#52525B]'
+                  ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
+                  : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
               }`}
             >
               {cat.label}
@@ -142,11 +142,11 @@ export default function Projects({ onNavigate }: ProjectsProps) {
       </div>
 
       {/* Technology Stack Filter Deck */}
-      <div className="p-5 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A]/60 space-y-3">
+      <div className="p-5 rounded-xl border border-(--line) bg-(--surface)/60 space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#FAFAFA]">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-(--text-1)">
               Filter by Technology Stack
             </span>
           </div>
@@ -175,14 +175,14 @@ export default function Projects({ onNavigate }: ProjectsProps) {
                   isSelected
                     ? 'bg-emerald-950/40 text-emerald-400 border-emerald-500/50'
                     : disabled
-                    ? 'opacity-30 bg-[#050505] text-[#52525B] border-[#121215] cursor-not-allowed'
-                    : 'bg-[#111] text-[#71717A] border-[#1A1A1A] hover:text-white hover:border-[#27272A]'
+                    ? 'opacity-30 bg-(--bg) text-(--text-faint) border-(--line) cursor-not-allowed'
+                    : 'bg-(--surface-2) text-(--text-muted) border-(--line) hover:text-(--text-1) hover:border-(--line-strong)'
                 }`}
               >
                 <span>{tag}</span>
                 {count > 0 && (
                   <span className={`px-1.5 py-0.5 rounded-full text-[8px] font-bold ${
-                    isSelected ? 'bg-emerald-500/20 text-emerald-300' : 'bg-[#1A1A1D] text-[#52525B]'
+                    isSelected ? 'bg-emerald-500/20 text-emerald-300' : 'bg-(--surface-3) text-(--text-faint)'
                   }`}>
                     {count}
                   </span>
@@ -201,11 +201,11 @@ export default function Projects({ onNavigate }: ProjectsProps) {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              className="flex flex-col items-center justify-center py-20 text-center rounded-xl border border-dashed border-[#1A1A1A] bg-[#0A0A0A]/30 px-4"
+              className="flex flex-col items-center justify-center py-20 text-center rounded-xl border border-dashed border-(--line) bg-(--surface)/30 px-4"
             >
-              <AlertCircle className="h-10 w-10 text-[#71717A] mb-3" />
-              <h3 className="text-base font-bold text-white">No cases matching filter parameters</h3>
-              <p className="text-xs text-[#71717A] max-w-sm mt-1">
+              <AlertCircle className="h-10 w-10 text-(--text-muted) mb-3" />
+              <h3 className="text-base font-bold text-(--text-1)">No cases matching filter parameters</h3>
+              <p className="text-xs text-(--text-muted) max-w-sm mt-1">
                 Try resetting your search filter or selecting the "All Projects" category to review other compilations.
               </p>
               <button
@@ -229,39 +229,39 @@ export default function Projects({ onNavigate }: ProjectsProps) {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                   whileHover={{ y: -3 }}
-                  className="flex flex-col justify-between p-6 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] hover:border-[#27272A] transition-all"
+                  className="flex flex-col justify-between p-6 rounded-xl border border-(--line) bg-(--surface) hover:border-(--line-strong) transition-all"
                 >
                   <div className="space-y-4">
                     {/* Top Meta info */}
                     <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-[#111] border border-[#1A1A1A] text-emerald-500 rounded">
+                      <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 bg-(--surface-2) border border-(--line) text-emerald-500 rounded">
                         {project.category}
                       </span>
-                      <span className="text-[9px] font-mono text-[#52525B] uppercase tracking-wider">
+                      <span className="text-[9px] font-mono text-(--text-faint) uppercase tracking-wider">
                         AA COMPLIANT
                       </span>
                     </div>
 
                     <div className="space-y-1.5">
-                      <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug">
+                      <h3 className="text-base sm:text-lg font-bold text-(--text-1) tracking-tight leading-snug">
                         {project.title}
                       </h3>
-                      <p className="text-[10px] text-[#71717A] font-mono line-clamp-1">
+                      <p className="text-[10px] text-(--text-muted) font-mono line-clamp-1">
                         {project.subtitle}
                       </p>
-                      <p className="text-xs sm:text-sm text-[#A1A1AA] line-clamp-3 leading-relaxed pt-1">
+                      <p className="text-xs sm:text-sm text-(--text-mid) line-clamp-3 leading-relaxed pt-1">
                         {project.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Footer tags & CTA */}
-                  <div className="pt-4 mt-6 border-t border-[#1A1A1A] space-y-4">
+                  <div className="pt-4 mt-6 border-t border-(--line) space-y-4">
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 text-[9px] font-mono text-[#71717A] bg-[#111] border border-[#1A1A1A] rounded"
+                          className="px-2 py-0.5 text-[9px] font-mono text-(--text-muted) bg-(--surface-2) border border-(--line) rounded"
                         >
                           {tag}
                         </span>
@@ -271,7 +271,7 @@ export default function Projects({ onNavigate }: ProjectsProps) {
                     <div className="flex items-center justify-between pt-1">
                       <button
                         onClick={() => onNavigate(`/projects/${project.slug}`)}
-                        className="inline-flex items-center gap-1 text-[10px] font-mono font-bold uppercase tracking-wider text-white hover:text-emerald-500 transition cursor-pointer bg-transparent border-none"
+                        className="inline-flex items-center gap-1 text-[10px] font-mono font-bold uppercase tracking-wider text-(--text-1) hover:text-emerald-500 transition cursor-pointer bg-transparent border-none"
                       >
                         <span>Case study</span>
                         <ArrowUpRight className="h-3 w-3" />
@@ -282,7 +282,7 @@ export default function Projects({ onNavigate }: ProjectsProps) {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 text-[#71717A] hover:text-white transition-colors"
+                          className="p-1.5 text-(--text-muted) hover:text-(--text-1) transition-colors"
                           aria-label={`View ${project.title} source on GitHub`}
                           onClick={(e) => e.stopPropagation()}
                         >

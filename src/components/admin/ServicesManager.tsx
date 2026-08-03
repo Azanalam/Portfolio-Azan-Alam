@@ -77,20 +77,20 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
 
   return (
     <div className="space-y-6 font-sans">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1A1A1A] pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-(--line) pb-5">
         <div>
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold text-(--text-1) flex items-center gap-2">
             <Briefcase className="h-5 w-5 text-emerald-500" />
             <span>Services Catalog</span>
           </h2>
-          <p className="text-xs text-[#71717A] mt-1 uppercase font-mono tracking-wider">
+          <p className="text-xs text-(--text-muted) mt-1 uppercase font-mono tracking-wider">
             Define client offers, deliverables, and call-to-action labels. Services render on the public Services page and homepage.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={addService}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-neutral-100 text-black font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-(--cta-bg) hover:bg-(--cta-hover) text-(--cta-fg) font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
           >
             <Plus className="h-3.5 w-3.5" />
             <span>Add Service</span>
@@ -98,7 +98,7 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
           <button
             onClick={handleSave}
             disabled={saving}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-(--cta-fg) font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer disabled:opacity-50"
           >
             {saving ? (
               <span>Saving...</span>
@@ -126,20 +126,20 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97 }}
-              className="border border-[#1A1A1A] bg-[#0A0A0A] rounded-xl p-5 space-y-4"
+              className="border border-(--line) bg-(--surface) rounded-xl p-5 space-y-4"
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-3">
                   <span className="px-2 py-1 text-[9px] font-mono font-bold text-emerald-500 bg-emerald-950/20 border border-emerald-500/10 rounded">
                     #{idx + 1}
                   </span>
-                  <span className="text-[9px] font-mono uppercase tracking-widest text-[#71717A]">{service.id}</span>
+                  <span className="text-[9px] font-mono uppercase tracking-widest text-(--text-muted)">{service.id}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => moveService(idx, 'up')}
                     disabled={idx === 0}
-                    className="p-1 text-[#71717A] hover:text-white transition disabled:opacity-20 cursor-pointer"
+                    className="p-1 text-(--text-muted) hover:text-(--text-1) transition disabled:opacity-20 cursor-pointer"
                     title="Move up"
                   >
                     <MoveUp className="h-3.5 w-3.5" />
@@ -147,12 +147,12 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
                   <button
                     onClick={() => moveService(idx, 'down')}
                     disabled={idx === services.length - 1}
-                    className="p-1 text-[#71717A] hover:text-white transition disabled:opacity-20 cursor-pointer"
+                    className="p-1 text-(--text-muted) hover:text-(--text-1) transition disabled:opacity-20 cursor-pointer"
                     title="Move down"
                   >
                     <MoveDown className="h-3.5 w-3.5" />
                   </button>
-                  <label className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider text-[#71717A] cursor-pointer ml-2">
+                  <label className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider text-(--text-muted) cursor-pointer ml-2">
                     <input
                       type="checkbox"
                       checked={service.highlight}
@@ -163,7 +163,7 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
                   </label>
                   <button
                     onClick={() => removeService(service.id)}
-                    className="p-1.5 text-[#71717A] hover:text-red-400 transition cursor-pointer ml-1"
+                    className="p-1.5 text-(--text-muted) hover:text-red-400 transition cursor-pointer ml-1"
                     title="Delete service"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
@@ -173,20 +173,20 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <div className="space-y-1">
-                  <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">Title</span>
+                  <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">Title</span>
                   <input
                     type="text"
                     value={service.title}
                     onChange={(e) => patch(service.id, { title: e.target.value })}
-                    className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">Icon</span>
+                  <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">Icon</span>
                   <select
                     value={service.icon}
                     onChange={(e) => patch(service.id, { icon: e.target.value })}
-                    className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                   >
                     {ICON_OPTIONS.map((icon) => (
                       <option key={icon} value={icon}>
@@ -196,37 +196,37 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">Price Anchor</span>
+                  <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">Price Anchor</span>
                   <input
                     type="text"
                     value={service.price}
                     onChange={(e) => patch(service.id, { price: e.target.value })}
-                    className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">CTA Label</span>
+                  <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">CTA Label</span>
                   <input
                     type="text"
                     value={service.ctaLabel}
                     onChange={(e) => patch(service.id, { ctaLabel: e.target.value })}
-                    className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">Description</span>
+                <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">Description</span>
                 <textarea
                   rows={2}
                   value={service.description}
                   onChange={(e) => patch(service.id, { description: e.target.value })}
-                  className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500 resize-y"
+                  className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500 resize-y"
                 />
               </div>
 
               <div className="space-y-1">
-                <span className="text-[8px] font-mono font-bold text-[#71717A] block uppercase">
+                <span className="text-[8px] font-mono font-bold text-(--text-muted) block uppercase">
                   Features (comma separated)
                 </span>
                 <input
@@ -237,7 +237,7 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
                       features: e.target.value.split(',').map((f) => f.trim()).filter(Boolean),
                     })
                   }
-                  className="w-full bg-[#111] border border-[#1A1A1A] text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-(--surface-2) border border-(--line) text-(--text-1) rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </motion.div>
@@ -245,9 +245,9 @@ export default function ServicesManager({ data, onUpdate }: ServicesManagerProps
         </AnimatePresence>
 
         {services.length === 0 && (
-          <div className="text-center p-12 border border-dashed border-[#1A1A1A] rounded-xl bg-[#0A0A0A]/30">
-            <Sparkles className="h-8 w-8 text-[#71717A] mx-auto mb-3" />
-            <p className="text-xs text-[#71717A]">No services configured. Add your first service offer to get started.</p>
+          <div className="text-center p-12 border border-dashed border-(--line) rounded-xl bg-(--surface)/30">
+            <Sparkles className="h-8 w-8 text-(--text-muted) mx-auto mb-3" />
+            <p className="text-xs text-(--text-muted)">No services configured. Add your first service offer to get started.</p>
           </div>
         )}
       </div>

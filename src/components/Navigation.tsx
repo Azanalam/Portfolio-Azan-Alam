@@ -73,19 +73,19 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
         aria-hidden="true"
       />
 
-      <header className="sticky top-0 z-40 w-full border-b border-[#1A1A1A] bg-[#050505]/85 backdrop-blur-md text-white">
+      <header className="sticky top-0 z-40 w-full border-b border-(--line) bg-(--bg)/85 backdrop-blur-md text-(--text-1)">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           
           {/* Logo / Brand Signature */}
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-3 font-mono text-sm font-semibold tracking-tight text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#27272A] rounded px-1.5 py-1"
+            className="flex items-center gap-3 font-mono text-sm font-semibold tracking-tight text-(--text-1) focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-(--line-strong) rounded px-1.5 py-1"
             aria-label="Developer Portfolio Home"
           >
-            <div className="w-7 h-7 bg-white rounded-sm flex items-center justify-center shrink-0">
-              <span className="text-black font-black text-xs">{brandLogo}</span>
+            <div className="w-7 h-7 bg-(--cta-bg) rounded-sm flex items-center justify-center shrink-0">
+              <span className="text-(--cta-fg) font-black text-xs">{brandLogo}</span>
             </div>
-            <span className="text-[11px] font-bold tracking-wider uppercase text-[#FAFAFA]">{brandLabel}</span>
+            <span className="text-[11px] font-bold tracking-wider uppercase text-(--text-1)">{brandLabel}</span>
           </button>
 
           {/* Desktop Navigation */}
@@ -100,20 +100,20 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
                 <button
                   key={item.label}
                   onClick={() => navigate(item.hash.replace(/^#/, ''))}
-                  className={`relative px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#27272A] ${
-                    isActive ? 'text-white' : 'text-[#A1A1AA] hover:text-white'
+                  className={`relative px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-(--line-strong) ${
+                    isActive ? 'text-(--text-1)' : 'text-(--text-mid) hover:text-(--text-1)'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeNavBackground"
-                      className="absolute inset-0 bg-[#1A1A1A] border border-[#27272A] rounded-full -z-10"
+                      className="absolute inset-0 bg-(--surface-3) border border-(--line-strong) rounded-full -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                   <span className="relative z-10 flex items-center gap-1.5">
                     {item.label}
-                    <kbd className="hidden lg:inline-block px-1.5 py-0.2 text-[9px] font-mono text-[#71717A] bg-black border border-[#1A1A1A] rounded">
+                    <kbd className="hidden lg:inline-block px-1.5 py-0.2 text-[9px] font-mono text-(--text-muted) bg-(--surface-2) border border-(--line) rounded">
                       {item.key}
                     </kbd>
                   </span>
@@ -121,18 +121,18 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
               );
             })}
 
-            <div className="h-4 w-px bg-[#1A1A1A] mx-2" aria-hidden="true" />
+            <div className="h-4 w-px bg-(--surface-3) mx-2" aria-hidden="true" />
 
             {/* Quick Action: Search / Command Palette */}
             <button
               onClick={onOpenCommandPalette}
-              className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-[#A1A1AA] hover:text-white bg-[#1A1A1A] border border-[#27272A] rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#27272A]"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-(--text-mid) hover:text-(--text-1) bg-(--surface-3) border border-(--line-strong) rounded-full transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-(--line-strong)"
               title="Open Command Palette (Ctrl+K)"
               aria-label="Open command palette"
             >
               <Search className="h-3 w-3" />
               <span className="hidden lg:inline uppercase tracking-widest text-[10px] font-bold">Search</span>
-              <kbd className="font-mono text-[9px] text-[#71717A]">
+              <kbd className="font-mono text-[9px] text-(--text-muted)">
                 ⌘K
               </kbd>
             </button>
@@ -140,7 +140,7 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
             <ThemeToggle />
 
             {/* Available badge */}
-            <div className="px-3 py-1 bg-[#1A1A1A] border border-[#27272A] rounded-full flex items-center gap-2 ml-1">
+            <div className="px-3 py-1 bg-(--surface-3) border border-(--line-strong) rounded-full flex items-center gap-2 ml-1">
               <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
               <span className="text-[10px] uppercase font-bold text-emerald-500">Available</span>
             </div>
@@ -151,14 +151,14 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
             <ThemeToggle />
             <button
               onClick={onOpenCommandPalette}
-              className="p-2 text-[#A1A1AA] hover:text-white bg-[#1A1A1A] border border-[#27272A] rounded-full transition"
+              className="p-2 text-(--text-mid) hover:text-(--text-1) bg-(--surface-3) border border-(--line-strong) rounded-full transition"
               aria-label="Search"
             >
               <Search className="h-4 w-4" />
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-[#A1A1AA] hover:text-white focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#27272A] rounded-full"
+              className="p-2 text-(--text-mid) hover:text-(--text-1) focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-(--line-strong) rounded-full"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -177,7 +177,7 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-x-0 top-16 z-30 border-b border-[#1A1A1A] bg-[#050505]/95 backdrop-blur-lg px-6 py-8 md:hidden shadow-lg text-white"
+            className="fixed inset-x-0 top-16 z-30 border-b border-(--line) bg-(--bg)/95 backdrop-blur-lg px-6 py-8 md:hidden shadow-lg text-(--text-1)"
           >
             <nav className="flex flex-col gap-3" aria-label="Mobile navigation">
               {navItems.map((item, idx) => {
@@ -195,12 +195,12 @@ export default function Navigation({ onOpenCommandPalette }: NavigationProps) {
                     }}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold transition-all uppercase tracking-widest ${
                       isActive 
-                        ? 'bg-[#1A1A1A] border border-[#27272A] text-white pl-6' 
-                        : 'text-[#A1A1AA] hover:bg-[#1A1A1A]/50 hover:text-white'
+                        ? 'bg-(--surface-3) border border-(--line-strong) text-(--text-1) pl-6' 
+                        : 'text-(--text-mid) hover:bg-(--surface-3)/50 hover:text-(--text-1)'
                     }`}
                   >
                     <span>{item.label}</span>
-                    <span className="font-mono text-xs text-[#71717A]">Shortcut {item.key}</span>
+                    <span className="font-mono text-xs text-(--text-muted)">Shortcut {item.key}</span>
                   </button>
                 );
               })}

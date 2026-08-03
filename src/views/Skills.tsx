@@ -266,7 +266,7 @@ export default function Skills() {
 
   if (loading) {
     return (
-      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-[#71717A] gap-2">
+      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-(--text-muted) gap-2">
         <svg className="animate-spin h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -290,26 +290,26 @@ export default function Skills() {
           <Cpu className="h-4 w-4" />
           <span>CAPABILITIES MATRIX</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-[#FAFAFA]">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-(--text-1)">
           Technical Capabilities & Expertise
         </h1>
-        <p className="text-sm sm:text-base text-[#A1A1AA] max-w-2xl font-sans">
+        <p className="text-sm sm:text-base text-(--text-mid) max-w-2xl font-sans">
           An interactive, telemetry-driven breakdown of technical networks and engineering layers. Toggle views to inspect deep production validation loops.
         </p>
       </div>
 
       {/* Toolbar Options */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-xl border border-(--line) bg-(--surface)">
         
         {/* Live Search Input */}
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#71717A]" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-(--text-muted)" />
           <input
             type="text"
             placeholder="Search capability or stack..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-[#050505] border border-[#1A1A1A] rounded-lg text-sm text-white placeholder-[#52525B] focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
+            className="w-full pl-9 pr-4 py-2 bg-(--bg) border border-(--line) rounded-lg text-sm text-(--text-1) placeholder-(--text-faint) focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
             aria-label="Search skills"
           />
         </div>
@@ -322,8 +322,8 @@ export default function Skills() {
             onClick={() => setActiveTab('topology')}
             className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-150 flex items-center gap-2 cursor-pointer ${
               activeTab === 'topology'
-                ? 'bg-white text-black border-white shadow-sm'
-                : 'bg-[#1A1A1A] text-[#A1A1AA] border-[#27272A] hover:text-white hover:border-[#52525B]'
+                ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
+                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
             }`}
           >
             <Network className="h-3 w-3" />
@@ -335,8 +335,8 @@ export default function Skills() {
             onClick={() => setActiveTab('matrix')}
             className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-150 flex items-center gap-2 cursor-pointer ${
               activeTab === 'matrix'
-                ? 'bg-white text-black border-white shadow-sm'
-                : 'bg-[#1A1A1A] text-[#A1A1AA] border-[#27272A] hover:text-white hover:border-[#52525B]'
+                ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
+                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
             }`}
           >
             <LayoutGrid className="h-3 w-3" />
@@ -358,13 +358,13 @@ export default function Skills() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
           >
             {/* Left Column: Interactive Topology Chart Canvas */}
-            <div className="lg:col-span-7 p-6 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] flex flex-col justify-between overflow-hidden relative min-h-[460px] select-none">
+            <div className="lg:col-span-7 p-6 rounded-xl border border-(--line) bg-(--surface) flex flex-col justify-between overflow-hidden relative min-h-[460px] select-none">
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2 text-[10px] font-mono text-[#71717A]">
+                <div className="flex items-center gap-2 text-[10px] font-mono text-(--text-muted)">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span>DETERMINISTIC INTERACTIVE GRAPH</span>
                 </div>
-                <div className="text-[9px] font-mono text-[#52525B] hidden sm:block">
+                <div className="text-[9px] font-mono text-(--text-faint) hidden sm:block">
                   SELECT NODES FOR DIAGNOSTICS
                 </div>
               </div>
@@ -372,7 +372,7 @@ export default function Skills() {
               {/* Responsive SVG Graph Container */}
               <div className="w-full flex justify-center items-center overflow-auto py-4">
                 {skillsNodes.length === 0 ? (
-                  <div className="text-xs font-mono text-[#71717A]">No skill nodes available. Populate in the CMS.</div>
+                  <div className="text-xs font-mono text-(--text-muted)">No skill nodes available. Populate in the CMS.</div>
                 ) : (
                   <svg
                     viewBox="0 0 800 450"
@@ -404,7 +404,7 @@ export default function Skills() {
                         <line 
                           key={`backbone-${idx}`}
                           x1={c.x} y1={c.y} x2={next.x} y2={next.y} 
-                          className="stroke-[#1C1C1F] stroke-1" 
+                          className="stroke-(--surface-3) stroke-1" 
                           strokeDasharray="4,4" 
                         />
                       );
@@ -425,7 +425,7 @@ export default function Skills() {
                             className={`transition-all duration-300 ${
                               isSelected 
                                 ? 'stroke-emerald-500/60 stroke-2 line-pulse' 
-                                : 'stroke-[#1A1A1D] stroke-[1.5px] hover:stroke-[#27272A]'
+                                : 'stroke-(--surface-3) stroke-[1.5px] hover:stroke-(--line-strong)'
                             }`}
                           />
                         </g>
@@ -443,8 +443,8 @@ export default function Skills() {
                             cx={center.x}
                             cy={center.y}
                             r="20"
-                            className={`fill-[#050505] border transition-colors duration-300 ${
-                              hasActiveFilter ? 'stroke-emerald-500' : 'stroke-[#27272A]'
+                            className={`fill-(--bg) border transition-colors duration-300 ${
+                              hasActiveFilter ? 'stroke-emerald-500' : 'stroke-(--line-strong)'
                             }`}
                             strokeWidth="2"
                           />
@@ -458,7 +458,7 @@ export default function Skills() {
                             x={center.x}
                             y={center.y - 28}
                             textAnchor="middle"
-                            className="fill-[#A1A1AA] text-[10px] font-mono font-bold tracking-wider uppercase"
+                            className="fill-(--text-mid) text-[10px] font-mono font-bold tracking-wider uppercase"
                           >
                             {center.category.split(' ')[0].toUpperCase()} HUB
                           </text>
@@ -482,8 +482,8 @@ export default function Skills() {
                             r="18"
                             className={`transition-all duration-300 ${
                               isSelected 
-                                ? 'fill-[#0E2F20]/90 stroke-emerald-500 stroke-2' 
-                                : 'fill-[#0D0D10] stroke-[#222] hover:stroke-[#444] hover:fill-[#121216]'
+                                ? 'fill-(--tint)/90 stroke-emerald-500 stroke-2' 
+                                : 'fill-(--surface) stroke-(--line-strong) hover:stroke-(--line-strong) hover:fill-(--surface-2)'
                             }`}
                           />
 
@@ -492,7 +492,7 @@ export default function Skills() {
                             y={node.y + 30}
                             textAnchor="middle"
                             className={`text-[9px] font-mono font-medium tracking-tight transition-all duration-300 ${
-                              isSelected ? 'fill-white font-bold' : 'fill-[#71717A] group-hover:fill-[#A1A1AA]'
+                              isSelected ? 'fill-white font-bold' : 'fill-(--text-muted) group-hover:fill-(--text-mid)'
                             }`}
                           >
                             {node.name.split(' ')[0]}
@@ -521,7 +521,7 @@ export default function Skills() {
               </div>
 
               {/* Map Footer Metadata */}
-              <div className="flex items-center gap-4 text-[10px] text-[#52525B] font-sans border-t border-[#121215] pt-4">
+              <div className="flex items-center gap-4 text-[10px] text-(--text-faint) font-sans border-t border-(--line) pt-4">
                 <Info className="h-3.5 w-3.5 flex-shrink-0 text-emerald-600" />
                 <p>
                   Our interactive topology maps continuous orbital nodes based on operational domains. Select an orbital node to execute diagnostic traces.
@@ -534,21 +534,21 @@ export default function Skills() {
               
               {/* Telemetry Header Details Card */}
               {currentSkill ? (
-                <div className="p-6 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] space-y-4">
+                <div className="p-6 rounded-xl border border-(--line) bg-(--surface) space-y-4">
                   <div className="flex items-start justify-between">
                     <div className="space-y-1">
                       <span className="text-[9px] font-mono text-emerald-500 font-bold uppercase tracking-widest bg-emerald-950/40 border border-emerald-900 px-2 py-0.5 rounded">
                         {currentSkill.level.toUpperCase()} LEVEL
                       </span>
-                      <h3 className="text-xl font-bold text-white tracking-tight pt-1">
+                      <h3 className="text-xl font-bold text-(--text-1) tracking-tight pt-1">
                         {currentSkill.name}
                       </h3>
-                      <p className="text-[10px] text-[#71717A] font-mono uppercase tracking-wider">
+                      <p className="text-[10px] text-(--text-muted) font-mono uppercase tracking-wider">
                         {currentSkill.category}
                       </p>
                     </div>
                     
-                    <span className="h-10 w-10 rounded-lg bg-[#111] border border-[#222] flex items-center justify-center text-emerald-400">
+                    <span className="h-10 w-10 rounded-lg bg-(--surface-2) border border-(--line-strong) flex items-center justify-center text-emerald-400">
                       {(() => {
                         const Icon = iconMap[currentSkill.iconName] || Code;
                         return <Icon className="h-5 w-5" />;
@@ -557,25 +557,25 @@ export default function Skills() {
                   </div>
 
                   {/* Practical Use Cases Details */}
-                  <div className="space-y-2 border-t border-[#151518] pt-4">
-                    <span className="text-[10px] font-mono text-[#52525B] uppercase tracking-widest font-semibold block">
+                  <div className="space-y-2 border-t border-(--line) pt-4">
+                    <span className="text-[10px] font-mono text-(--text-faint) uppercase tracking-widest font-semibold block">
                       PRODUCTION DEPLOYMENT VALIDATION:
                     </span>
-                    <p className="text-xs text-[#A1A1AA] leading-relaxed font-sans">
+                    <p className="text-xs text-(--text-mid) leading-relaxed font-sans">
                       {currentSkill.useCase}
                     </p>
                   </div>
 
                   {/* Quantitative System Stats */}
-                  <div className="grid grid-cols-2 gap-4 pt-2 border-t border-[#151518]">
-                    <div className="bg-[#050505] border border-[#121215] p-3 rounded-lg text-center">
-                      <span className="text-[9px] font-mono text-[#52525B] uppercase block">DEPLOYED PERIOD</span>
-                      <span className="text-lg font-mono font-bold text-white mt-0.5 inline-block">
+                  <div className="grid grid-cols-2 gap-4 pt-2 border-t border-(--line)">
+                    <div className="bg-(--bg) border border-(--line) p-3 rounded-lg text-center">
+                      <span className="text-[9px] font-mono text-(--text-faint) uppercase block">DEPLOYED PERIOD</span>
+                      <span className="text-lg font-mono font-bold text-(--text-1) mt-0.5 inline-block">
                         {currentSkill.years} Years
                       </span>
                     </div>
-                    <div className="bg-[#050505] border border-[#121215] p-3 rounded-lg text-center">
-                      <span className="text-[9px] font-mono text-[#52525B] uppercase block">PIPELINE VERIFY</span>
+                    <div className="bg-(--bg) border border-(--line) p-3 rounded-lg text-center">
+                      <span className="text-[9px] font-mono text-(--text-faint) uppercase block">PIPELINE VERIFY</span>
                       <span className="text-xs font-mono font-bold text-emerald-500 mt-1.5 flex items-center justify-center gap-1">
                         <Check className="h-3 w-3" /> SUCCESS
                       </span>
@@ -583,17 +583,17 @@ export default function Skills() {
                   </div>
                 </div>
               ) : (
-                <div className="p-6 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] text-center text-xs font-mono text-[#71717A]">
+                <div className="p-6 rounded-xl border border-(--line) bg-(--surface) text-center text-xs font-mono text-(--text-muted)">
                   Select a skill node to view diagnostics telemetry.
                 </div>
               )}
 
               {/* Developer Interactive Telemetry Terminal */}
-              <div className="p-5 rounded-xl border border-[#1A1A1A] bg-[#050505] flex-1 flex flex-col justify-between font-mono text-xs min-h-[220px]">
-                <div className="flex items-center justify-between pb-3 border-b border-[#121215]">
+              <div className="p-5 rounded-xl border border-(--line) bg-(--bg) flex-1 flex flex-col justify-between font-mono text-xs min-h-[220px]">
+                <div className="flex items-center justify-between pb-3 border-b border-(--line)">
                   <div className="flex items-center gap-2">
-                    <Terminal className="h-3.5 w-3.5 text-[#52525B]" />
-                    <span className="text-[10px] text-[#71717A] uppercase font-bold tracking-tight">TELEMETRY DIAGNOSTICS</span>
+                    <Terminal className="h-3.5 w-3.5 text-(--text-faint)" />
+                    <span className="text-[10px] text-(--text-muted) uppercase font-bold tracking-tight">TELEMETRY DIAGNOSTICS</span>
                   </div>
                   <span className="text-[9px] text-emerald-500 bg-emerald-950/30 px-1.5 py-0.5 rounded border border-emerald-900/30 font-semibold animate-pulse">
                     ONLINE
@@ -607,7 +607,7 @@ export default function Skills() {
                     return (
                       <div key={i} className="leading-relaxed text-[11px]">
                         <span className="text-emerald-500 select-none mr-2">&gt;</span>
-                        <span className={isStatus ? 'text-emerald-400 font-bold' : 'text-gray-300'}>
+                        <span className={isStatus ? 'text-emerald-400 font-bold' : 'text-(--text-2)'}>
                           {log}
                         </span>
                       </div>
@@ -615,7 +615,7 @@ export default function Skills() {
                   })}
                 </div>
 
-                <div className="pt-2 border-t border-[#121215] text-[9px] text-[#52525B] flex justify-between">
+                <div className="pt-2 border-t border-(--line) text-[9px] text-(--text-faint) flex justify-between">
                   <span>FRAME BUFFER 60FPS</span>
                   <span>SHA256 STABLE</span>
                 </div>
@@ -634,7 +634,7 @@ export default function Skills() {
             className="space-y-12"
           >
             {skillGroups.length === 0 ? (
-              <div className="p-12 text-center rounded-xl border border-dashed border-[#1A1A1A] bg-[#0A0A0A] text-xs font-mono text-[#71717A]">
+              <div className="p-12 text-center rounded-xl border border-dashed border-(--line) bg-(--surface) text-xs font-mono text-(--text-muted)">
                 No skill groups present in CMS. Add new ones in the Admin panel!
               </div>
             ) : (
@@ -651,12 +651,12 @@ export default function Skills() {
                   <section key={group.category} className="space-y-6">
                     
                     {/* Group Title Section */}
-                    <div className="space-y-1 border-b border-[#1A1A1A] pb-3">
-                      <h2 className="text-lg font-bold text-[#FAFAFA] tracking-tighter flex items-center gap-2.5">
+                    <div className="space-y-1 border-b border-(--line) pb-3">
+                      <h2 className="text-lg font-bold text-(--text-1) tracking-tighter flex items-center gap-2.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                         <span>{group.category}</span>
                       </h2>
-                      <p className="text-[10px] text-[#71717A] font-mono tracking-wider uppercase">
+                      <p className="text-[10px] text-(--text-muted) font-mono tracking-wider uppercase">
                         {group.description}
                       </p>
                     </div>
@@ -670,15 +670,15 @@ export default function Skills() {
                             key={skill.name}
                             variants={itemVariants}
                             whileHover={{ y: -2 }}
-                            className="p-5 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] hover:border-[#27272A] flex flex-col justify-between transition duration-200"
+                            className="p-5 rounded-xl border border-(--line) bg-(--surface) hover:border-(--line-strong) flex flex-col justify-between transition duration-200"
                           >
                             <div className="space-y-3">
                               <div className="flex items-start justify-between">
                                 <div className="space-y-0.5">
-                                  <h3 className="font-bold text-sm text-white tracking-tight flex items-center gap-2">
+                                  <h3 className="font-bold text-sm text-(--text-1) tracking-tight flex items-center gap-2">
                                     <span>{skill.name}</span>
                                   </h3>
-                                  <div className="flex items-center gap-2 text-[10px] font-mono text-[#71717A]">
+                                  <div className="flex items-center gap-2 text-[10px] font-mono text-(--text-muted)">
                                     <span>{skill.years} {skill.years === 1 ? 'Year' : 'Years'} Exp</span>
                                     <span>•</span>
                                     <span className="font-semibold text-emerald-500">
@@ -687,17 +687,17 @@ export default function Skills() {
                                   </div>
                                 </div>
 
-                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#111] border border-[#1A1A1A] text-emerald-400">
+                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-(--surface-2) border border-(--line) text-emerald-400">
                                   <Icon className="h-4 w-4" />
                                 </span>
                               </div>
 
-                              <p className="text-xs text-[#A1A1AA] leading-relaxed font-sans border-t border-[#1A1A1A] pt-3">
+                              <p className="text-xs text-(--text-mid) leading-relaxed font-sans border-t border-(--line) pt-3">
                                 {skill.useCase}
                               </p>
                             </div>
 
-                            <div className="pt-4 flex items-center gap-1.5 text-[9px] font-mono text-[#52525B]">
+                            <div className="pt-4 flex items-center gap-1.5 text-[9px] font-mono text-(--text-faint)">
                               <Sparkles className="h-3 w-3 text-emerald-500" />
                               <span>Validated in production pipeline</span>
                             </div>
@@ -718,13 +718,13 @@ export default function Skills() {
       {/* Philosophy Section */}
       <motion.section 
         variants={itemVariants}
-        className="p-6 sm:p-8 rounded-xl border border-[#1A1A1A] bg-[#0A0A0A] space-y-4"
+        className="p-6 sm:p-8 rounded-xl border border-(--line) bg-(--surface) space-y-4"
       >
-        <h3 className="font-bold text-xs text-white uppercase tracking-widest font-mono flex items-center gap-2">
+        <h3 className="font-bold text-xs text-(--text-1) uppercase tracking-widest font-mono flex items-center gap-2">
           <Terminal className="h-4 w-4 text-emerald-500" />
           <span>My Approach to Technical Selection</span>
         </h3>
-        <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed font-sans">
+        <p className="text-xs sm:text-sm text-(--text-mid) leading-relaxed font-sans">
           I choose technologies based on standard engineering bounds (safety, payload weight, concurrency, and compliance) rather than passing visual trends. A pristine type system paired with robust automated pipeline verification is highly preferred over importing bloated boilerplate libraries. I aim to keep dependencies minimal to maintain long-term codebase health.
         </p>
       </motion.section>

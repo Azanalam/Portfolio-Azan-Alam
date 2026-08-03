@@ -112,7 +112,7 @@ export default function About() {
 
   if (loading) {
     return (
-      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-[#71717A] gap-3">
+      <div className="min-h-[400px] flex flex-col items-center justify-center font-mono text-xs text-(--text-muted) gap-3">
         <svg className="animate-spin h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -156,7 +156,7 @@ export default function About() {
 
         <motion.h1 
           variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FAFAFA] leading-[1.15]"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-(--text-1) leading-[1.15]"
         >
           {about?.introduction || 'Systems-minded engineer crafting modern, accessible web experiences.'}
         </motion.h1>
@@ -175,7 +175,7 @@ export default function About() {
               Biography
             </h2>
 
-            <p className="max-w-[700px] text-base sm:text-lg leading-relaxed text-zinc-300 font-sans">
+            <p className="max-w-[700px] text-base sm:text-lg leading-relaxed text-(--text-2) font-sans">
               {about?.biography || 'Hello, I am a full-stack engineer focused on building robust client-side applications, local virtual engines, and responsive design systems with modern TypeScript.'}
             </p>
 
@@ -183,7 +183,7 @@ export default function About() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a 
                 href="#/projects" 
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-all duration-200 shadow-sm active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-(--cta-bg) text-(--cta-fg) hover:bg-(--cta-hover) transition-all duration-200 shadow-sm active:scale-95"
               >
                 <span>View Projects</span>
                 <ArrowUpRight className="h-4 w-4" />
@@ -191,7 +191,7 @@ export default function About() {
 
               <a 
                 href="#/contact" 
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border border-[#27272A] bg-[#0A0A0A] text-zinc-300 hover:text-white hover:bg-[#18181B] hover:border-zinc-700 transition-all duration-200 active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border border-(--line-strong) bg-(--surface) text-(--text-2) hover:text-(--text-1) hover:bg-(--surface-3) hover:border-(--line-strong) transition-all duration-200 active:scale-95"
               >
                 <Mail className="h-4 w-4 text-emerald-400" />
                 <span>Contact Me</span>
@@ -202,7 +202,7 @@ export default function About() {
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border border-[#27272A] bg-[#0A0A0A] text-zinc-300 hover:text-white hover:bg-[#18181B] hover:border-zinc-700 transition-all duration-200 active:scale-95"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold border border-(--line-strong) bg-(--surface) text-(--text-2) hover:text-(--text-1) hover:bg-(--surface-3) hover:border-(--line-strong) transition-all duration-200 active:scale-95"
                 >
                   <FileText className="h-4 w-4 text-emerald-400" />
                   <span>View Résumé</span>
@@ -212,8 +212,8 @@ export default function About() {
           </motion.div>
 
           {/* Skills Grid */}
-          <motion.div variants={itemVariants} className="space-y-4 pt-4 border-t border-[#1A1A1A]">
-            <h3 className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-medium">
+          <motion.div variants={itemVariants} className="space-y-4 pt-4 border-t border-(--line)">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-(--text-mid) font-medium">
               Core Technical Capabilities
             </h3>
 
@@ -221,7 +221,7 @@ export default function About() {
               {skillsList.map((skill) => (
                 <div 
                   key={skill}
-                  className="flex items-center gap-2.5 p-3 rounded-xl border border-[#1E1E22] bg-[#0A0A0A] text-xs sm:text-sm font-medium text-zinc-200 hover:border-emerald-500/30 hover:bg-[#111115] transition-all duration-200"
+                  className="flex items-center gap-2.5 p-3 rounded-xl border border-(--line-strong) bg-(--surface) text-xs sm:text-sm font-medium text-(--text-2) hover:border-emerald-500/30 hover:bg-(--surface-2) transition-all duration-200"
                 >
                   <div className="flex items-center justify-center h-5 w-5 rounded-md bg-emerald-500/10 text-emerald-400 shrink-0">
                     <Check className="h-3.5 w-3.5" />
@@ -233,14 +233,14 @@ export default function About() {
           </motion.div>
 
           {/* Story & Career Goals */}
-          <motion.div variants={itemVariants} className="space-y-6 pt-6 border-t border-[#1A1A1A]">
+          <motion.div variants={itemVariants} className="space-y-6 pt-6 border-t border-(--line)">
             {about?.story && (
               <div className="space-y-2">
-                <h3 className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-medium flex items-center gap-2">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-(--text-mid) font-medium flex items-center gap-2">
                   <Compass className="h-3.5 w-3.5 text-emerald-400" />
                   Engineering Journey
                 </h3>
-                <p className="max-w-[700px] text-sm sm:text-base text-zinc-400 leading-relaxed">
+                <p className="max-w-[700px] text-sm sm:text-base text-(--text-mid) leading-relaxed">
                   {about.story}
                 </p>
               </div>
@@ -248,11 +248,11 @@ export default function About() {
 
             {about?.careerGoals && (
               <div className="space-y-2 pt-2">
-                <h3 className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-medium flex items-center gap-2">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-(--text-mid) font-medium flex items-center gap-2">
                   <Rocket className="h-3.5 w-3.5 text-emerald-400" />
                   Career Direction & Focus
                 </h3>
-                <p className="max-w-[700px] text-sm sm:text-base text-zinc-400 leading-relaxed">
+                <p className="max-w-[700px] text-sm sm:text-base text-(--text-mid) leading-relaxed">
                   {about.careerGoals}
                 </p>
               </div>
@@ -263,15 +263,15 @@ export default function About() {
 
         {/* Right Column: Developer Snapshot (Sticky Card) */}
         <motion.div variants={itemVariants} className="lg:col-span-4 lg:sticky lg:top-24">
-          <div className="p-6 rounded-2xl border border-[#1E1E22] bg-[#0A0A0A] shadow-2xl space-y-6 relative overflow-hidden">
+          <div className="p-6 rounded-2xl border border-(--line-strong) bg-(--surface) shadow-2xl space-y-6 relative overflow-hidden">
             {/* Subtle top glow line */}
             <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
 
             {/* Card Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-[#1A1A1A]">
+            <div className="flex items-center justify-between pb-4 border-b border-(--line)">
               <div className="flex items-center gap-2">
                 <UserCheck className="h-4 w-4 text-emerald-400" />
-                <h3 className="text-xs font-mono font-bold tracking-widest text-white uppercase">
+                <h3 className="text-xs font-mono font-bold tracking-widest text-(--text-1) uppercase">
                   Developer Snapshot
                 </h3>
               </div>
@@ -284,40 +284,40 @@ export default function About() {
             {/* Spec Items */}
             <div className="space-y-4 text-xs font-mono">
               <div>
-                <span className="text-zinc-500 block uppercase text-[10px] tracking-wider mb-1">Current Focus</span>
-                <span className="text-zinc-200 font-semibold block leading-snug">{snapshot.currentFocus}</span>
+                <span className="text-(--text-muted) block uppercase text-[10px] tracking-wider mb-1">Current Focus</span>
+                <span className="text-(--text-2) font-semibold block leading-snug">{snapshot.currentFocus}</span>
               </div>
 
               <div>
-                <span className="text-zinc-500 block uppercase text-[10px] tracking-wider mb-1">Specialization</span>
-                <span className="text-zinc-200 font-semibold block leading-snug">{snapshot.specialization}</span>
+                <span className="text-(--text-muted) block uppercase text-[10px] tracking-wider mb-1">Specialization</span>
+                <span className="text-(--text-2) font-semibold block leading-snug">{snapshot.specialization}</span>
               </div>
 
               <div>
-                <span className="text-zinc-500 block uppercase text-[10px] tracking-wider mb-1">Tech Stack</span>
-                <span className="text-zinc-300 block leading-snug font-sans text-xs">
+                <span className="text-(--text-muted) block uppercase text-[10px] tracking-wider mb-1">Tech Stack</span>
+                <span className="text-(--text-2) block leading-snug font-sans text-xs">
                   {snapshot.techStack}
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#1A1A1A]">
+              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-(--line)">
                 <div>
-                  <span className="text-zinc-500 block uppercase text-[9px] tracking-wider mb-0.5">Availability</span>
+                  <span className="text-(--text-muted) block uppercase text-[9px] tracking-wider mb-0.5">Availability</span>
                   <span className="text-emerald-400 font-semibold text-[11px]">{snapshot.availability}</span>
                 </div>
                 <div>
-                  <span className="text-zinc-500 block uppercase text-[9px] tracking-wider mb-0.5">Location</span>
-                  <span className="text-zinc-300 font-semibold text-[11px]">{snapshot.location}</span>
+                  <span className="text-(--text-muted) block uppercase text-[9px] tracking-wider mb-0.5">Location</span>
+                  <span className="text-(--text-2) font-semibold text-[11px]">{snapshot.location}</span>
                 </div>
               </div>
             </div>
 
             {/* Mini Quick Highlights */}
-            <div className="pt-4 border-t border-[#1A1A1A] grid grid-cols-2 gap-2 text-center">
+            <div className="pt-4 border-t border-(--line) grid grid-cols-2 gap-2 text-center">
               {statsList.slice(0, 2).map((st) => (
-                <div key={st.label} className="p-2.5 rounded-xl bg-[#111114] border border-[#1E1E22]">
-                  <div className="text-lg font-bold text-white font-mono">{st.value}</div>
-                  <div className="text-[10px] text-zinc-400">{st.label}</div>
+                <div key={st.label} className="p-2.5 rounded-xl bg-(--surface-2) border border-(--line-strong)">
+                  <div className="text-lg font-bold text-(--text-1) font-mono">{st.value}</div>
+                  <div className="text-[10px] text-(--text-mid)">{st.label}</div>
                 </div>
               ))}
             </div>
@@ -334,15 +334,15 @@ export default function About() {
               key={stat.label}
               variants={itemVariants}
               whileHover={{ y: -3 }}
-              className="p-6 rounded-2xl border border-[#1E1E22] bg-[#0A0A0A] hover:border-zinc-700/60 transition-all duration-200 space-y-1 text-center sm:text-left"
+              className="p-6 rounded-2xl border border-(--line-strong) bg-(--surface) hover:border-(--line-strong)/60 transition-all duration-200 space-y-1 text-center sm:text-left"
             >
-              <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight">
+              <div className="text-3xl sm:text-4xl font-extrabold text-(--text-1) font-mono tracking-tight">
                 {stat.value}
               </div>
-              <div className="text-sm font-semibold text-zinc-200">
+              <div className="text-sm font-semibold text-(--text-2)">
                 {stat.label}
               </div>
-              <div className="text-xs text-zinc-500 font-sans">
+              <div className="text-xs text-(--text-muted) font-sans">
                 {stat.subtext}
               </div>
             </motion.div>
@@ -352,12 +352,12 @@ export default function About() {
 
       {/* Engineering Principles */}
       <section className="space-y-6 pt-6">
-        <motion.div variants={itemVariants} className="flex items-center justify-between border-b border-[#1A1A1A] pb-4">
+        <motion.div variants={itemVariants} className="flex items-center justify-between border-b border-(--line) pb-4">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#FAFAFA] tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-(--text-1) tracking-tight">
               Engineering Principles
             </h2>
-            <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+            <p className="text-xs sm:text-sm text-(--text-mid) mt-1">
               Core guidelines that steer my design, architecture, and code execution.
             </p>
           </div>
@@ -371,21 +371,21 @@ export default function About() {
                 key={pr.title}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className="p-6 rounded-2xl border border-[#1E1E22] bg-[#0A0A0A] hover:border-zinc-700/80 transition-all duration-200 flex flex-col justify-between space-y-5 group shadow-lg"
+                className="p-6 rounded-2xl border border-(--line-strong) bg-(--surface) hover:border-(--line-strong)/80 transition-all duration-200 flex flex-col justify-between space-y-5 group shadow-lg"
               >
                 <div className="space-y-4">
-                  <div className="p-3 w-max rounded-xl bg-[#111115] border border-[#222228] text-emerald-400 group-hover:border-emerald-500/40 group-hover:text-emerald-300 transition-colors">
+                  <div className="p-3 w-max rounded-xl bg-(--surface-2) border border-(--line-strong) text-emerald-400 group-hover:border-emerald-500/40 group-hover:text-emerald-300 transition-colors">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="font-bold text-base text-white tracking-tight">
+                  <h3 className="font-bold text-base text-(--text-1) tracking-tight">
                     {pr.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-sans">
+                  <p className="text-xs sm:text-sm text-(--text-mid) leading-relaxed font-sans">
                     {pr.description}
                   </p>
                 </div>
                 
-                <div className="pt-3 border-t border-[#18181C] flex items-center gap-1.5 text-xs text-emerald-400 font-mono font-medium">
+                <div className="pt-3 border-t border-(--line) flex items-center gap-1.5 text-xs text-emerald-400 font-mono font-medium">
                   <CheckCircle className="h-4 w-4" />
                   <span>Enforced Standard</span>
                 </div>
@@ -396,12 +396,12 @@ export default function About() {
       </section>
 
       {/* Beyond Development */}
-      <section className="space-y-6 pt-6 border-t border-[#1A1A1A]">
+      <section className="space-y-6 pt-6 border-t border-(--line)">
         <motion.div variants={itemVariants} className="space-y-2">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#FAFAFA] tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-(--text-1) tracking-tight">
             Beyond Development
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 max-w-[700px] leading-relaxed">
+          <p className="text-xs sm:text-sm text-(--text-mid) max-w-[700px] leading-relaxed">
             {about?.interests || 'When I am not auditing code or designing interfaces, I engage in open-source exploration, technical writing, and problem-solving.'}
           </p>
         </motion.div>
@@ -414,15 +414,15 @@ export default function About() {
                 key={item.title}
                 variants={itemVariants}
                 whileHover={{ y: -3 }}
-                className="p-5 rounded-xl border border-[#1E1E22] bg-[#0A0A0A] hover:border-zinc-700 transition-all duration-200 space-y-2"
+                className="p-5 rounded-xl border border-(--line-strong) bg-(--surface) hover:border-(--line-strong) transition-all duration-200 space-y-2"
               >
                 <div className="flex items-center gap-2.5 text-emerald-400">
                   <div className="p-2 rounded-lg bg-emerald-500/10">
                     <Icon className="h-4 w-4" />
                   </div>
-                  <h3 className="font-bold text-sm text-white">{item.title}</h3>
+                  <h3 className="font-bold text-sm text-(--text-1)">{item.title}</h3>
                 </div>
-                <p className="text-xs text-zinc-400 leading-relaxed font-sans">
+                <p className="text-xs text-(--text-mid) leading-relaxed font-sans">
                   {item.desc}
                 </p>
               </motion.div>

@@ -9,18 +9,66 @@
   --color-accent-light: #10b981;
   --color-accent: #ffffff;
   --color-accent-dark: #a1a1aa;
-  
-  --color-ink-950: #fafafa;
-  --color-ink-900: #f4f4f5;
-  --color-ink-800: #e4e4e7;
-  --color-ink-700: #d4d4d8;
-  --color-ink-600: #a1a1aa;
-  --color-ink-500: #71717a;
-  --color-ink-400: #52525b;
-  --color-ink-200: #1a1a1a;
-  --color-ink-100: #111111;
-  --color-ink-5: #050505;
-  --color-ink-50: #0a0a0a;
+}
+
+/* ============ Theme tokens ============
+   Dark is the default; [data-theme='light'] flips every surface
+   and text color site-wide. */
+:root {
+  color-scheme: dark;
+
+  --bg: #050505;
+  --surface: #0a0a0a;
+  --surface-2: #111111;
+  --surface-3: #1a1a1a;
+
+  --line: #1a1a1a;
+  --line-strong: #27272a;
+
+  --text-1: #fafafa;
+  --text-2: #e4e4e7;
+  --text-mid: #a1a1aa;
+  --text-muted: #71717a;
+  --text-faint: #52525b;
+
+  --cta-bg: #fafafa;
+  --cta-fg: #050505;
+  --cta-hover: #ffffff;
+
+  --tint: #0e2f20;
+  --scrim: rgba(250, 250, 250, 0.4);
+  --focus-accent: #fafafa;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f4f4f5;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --surface-3: #e4e4e7;
+
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+
+  --text-1: #18181b;
+  --text-2: #3f3f46;
+  --text-mid: #52525b;
+  --text-muted: #71717a;
+  --text-faint: #9c9ca6;
+
+  --cta-bg: #18181b;
+  --cta-fg: #fafafa;
+  --cta-hover: #27272a;
+
+  --tint: #d1fae5;
+  --scrim: rgba(250, 250, 250, 0.4);
+  --focus-accent: #18181b;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-1);
 }
 
 /* Scrollbar styling */
@@ -30,21 +78,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
+  background: var(--surface-3);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #27272a;
+  background: var(--line-strong);
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: #050505;
+  background-color: var(--primary-color, #10b981);
+  color: #ffffff;
 }
 
 html {
@@ -55,8 +103,15 @@ html {
 
 /* Keyboard Focus Indicators */
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--focus-accent);
   outline-offset: 4px;
+}
+
+/* Smooth theme transitions */
+body, section, div, p, h1, h2, h3, h4, h5, h6, span, a, button, input, textarea, select, li, ul, ol, table, thead, tbody, tr, td, th, kbd, form, label, nav, aside, header, footer, main, article, blockquote, figure, pre, code {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow, outline-color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
 }
 
 /* Reduced motion considerations */
