@@ -10,7 +10,7 @@ dist/
 
 # Runtime data & logs (local cache + contact-form inbox)
 database.json
-data/
+/data/
 dev.log
 dev.err
 dev-server.pid
