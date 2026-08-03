@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment & secrets
+.env
+.env.local
+
+# Runtime data & logs (local cache + contact-form inbox)
+database.json
+data/
+dev.log
+dev.err
+dev-server.pid
+
+# Uploaded media (runtime assets; seeded elsewhere)
+public/uploads/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
