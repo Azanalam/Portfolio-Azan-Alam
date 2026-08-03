@@ -30,7 +30,7 @@ const defaultExperiences = [
     period: '2025 - Current',
     description: [
       'Building full-stack web projects end-to-end: React + TypeScript frontends, Node/Express APIs, and Supabase-backed persistence.',
-      'Shipping accessible, SEO-ready, high-performance sites â€” including this very portfolio CMS.'
+      'Shipping accessible, SEO-ready, high-performance sites — including this very portfolio CMS.'
     ],
     tags: ['React', 'TypeScript', 'Express', 'Supabase', 'Web Performance'],
     order: 0
@@ -94,7 +94,7 @@ const defaultServices: ServiceItem[] = [
     id: 'service-3',
     icon: 'Zap',
     title: 'Performance & SEO Audits',
-    description: 'A hard review of load time, Core Web Vitals, accessibility, and search visibility â€” with a prioritized list of fixes I can implement for you.',
+    description: 'A hard review of load time, Core Web Vitals, accessibility, and search visibility — with a prioritized list of fixes I can implement for you.',
     features: ['Lighthouse & Web Vitals review', 'Accessibility (WCAG AA) pass', 'Actionable prioritized roadmap', 'Hands-on fix implementation'],
     price: 'From $120',
     ctaLabel: 'Book an audit',
@@ -104,7 +104,7 @@ const defaultServices: ServiceItem[] = [
     id: 'service-4',
     icon: 'Layers',
     title: 'Modern Redesigns & Revamps',
-    description: 'Give an outdated site a modern, accessible rebuild â€” new design system fidelity, faster builds, and content migration with zero downtime.',
+    description: 'Give an outdated site a modern, accessible rebuild — new design system fidelity, faster builds, and content migration with zero downtime.',
     features: ['Design system adoption', 'Content migration', 'Tailwind & motion polish', 'Training & handover docs'],
     price: 'Custom quote',
     ctaLabel: 'Request a quote',
@@ -120,7 +120,7 @@ const initialDB: DBStructure = {
     brandColors: { primary: 'emerald', accent: 'emerald' },
     theme: 'dark',
     footerText: 'Crafted with React, TypeScript & Node. Fast, accessible, SEO-ready.',
-    copyright: 'Â© 2026 Azan Alam',
+    copyright: '© 2026 Azan Alam',
     email: 'azanalam7@gmail.com',
     phone: '',
     address: '',
@@ -157,11 +157,11 @@ const initialDB: DBStructure = {
     availability: true
   },
   about: {
-    biography: 'Hello, I am a software engineer focused on building robust client-side storage, local virtual engines, and fully accessible design systems. I operate under the philosophy that frontend engineering is systems engineering applied directly to user-facing boundaries.',
-    introduction: 'Systems-minded builder centered on the modern web platform.',
-    story: 'My engineering path started in low-level compiler principles, which ultimately led to a fascination with the web platform as a universal runtime. Since then, I have dedicated myself to proving that browser-based web applications can feel just as robust, responsive, and durable as high-end native software.',
-    careerGoals: 'I routinely collaborate with distributed tech stacks, build modular bundlers, and spearhead compliance testing guidelines. Whether designing logical vector clocks to handle distributed database writes or optimizing binary loaders, I focus on predictable codebases and transparent benchmarks.',
-    interests: 'When I am not auditing WebAssembly stack operations or drafting design specs, I usually read retro-computing publications, review paper drafts regarding peer-to-peer databases, or compile customized hardware keyboards. I find that building clean interfaces requires a balanced mental space, which is why I prioritize clear spacing, visual stillness, and structured focus.',
+    biography: 'I\'m Azan Alam, a Frontend & Full-Stack Web Developer specializing in Next.js, React, TypeScript, and modern UI engineering.\n\nI build responsive, high-performance websites that combine clean design with scalable architecture. From business websites to custom CMS platforms, I focus on speed, accessibility, SEO, and exceptional user experience.',
+    introduction: 'Transforming Design Concepts into Pixel-Perfect Code',
+    story: '',
+    careerGoals: 'Mission\n\nCreate digital products that look premium, perform flawlessly, and deliver real business value.',
+    interests: 'I recharge through a mix of outdoor activities and creative hobbies. I enjoy narrative-driven story games and studying how compelling plots and interactive worlds are crafted, and I love experimenting with AI tools to see how machine learning can supercharge my development workflow and spark ideas for new web projects. When I am not building, I read about web standards, system design, and the history of computing.',
     personalImage: '',
     principles: [
       {
@@ -203,10 +203,10 @@ const initialDB: DBStructure = {
       statusBadge: 'Available'
     },
     stats: [
-      { value: '15+', label: 'Projects', subtext: 'Built & Deployed' },
-      { value: '2+', label: 'Years Learning', subtext: 'Modern Web Architecture' },
-      { value: '100%', label: 'Responsive', subtext: 'Mobile to Ultra-wide' },
-      { value: '90+', label: 'Lighthouse Target', subtext: 'Performance & SEO' }
+      { label: 'Live Platform', value: '1', subtext: 'This portfolio, in production' },
+      { label: 'Responsive', value: '100%', subtext: 'Mobile to ultra-wide' },
+      { label: 'Accessibility', value: 'AA', subtext: 'Semantic, keyboard-first markup' },
+      { label: 'Automated Tests', value: '18', subtext: 'API & UI suites, CI-ready' }
     ],
     interestHighlights: [
       { title: 'Continuous Learning', desc: 'Constantly absorbing compiler tech, web standards, and edge runtimes.', icon: 'BookOpen' },
@@ -239,7 +239,55 @@ const initialDB: DBStructure = {
     }
   ],
   skills: defaultSkills,
-  projects: [],
+  projects: [
+    {
+      slug: 'portfolio-cms',
+      tags: ['React 19', 'Vite', 'Tailwind CSS', 'Express', 'Supabase', 'JWT Auth', 'Vitest'],
+      goals: [
+        'Let the owner edit every section from a browser CMS with no redeploys.',
+        'Keep the public site fast with a single-document API response.',
+        'Never corrupt content: writes go through a serialized queue with atomic file replacement.',
+        'Ship with security hardening: JWT auth, rate limiting, and upload whitelisting.'
+      ],
+      order: 0,
+      title: 'This Site — Full-Stack Portfolio CMS',
+      lessons: [
+        'File-backed caches must compare before they write, or dev servers loop.',
+        'Atomic rename is the cheapest corruption-proofing a file cache can get.',
+        'A CMS you can edit from a browser keeps a portfolio alive for years.'
+      ],
+      liveUrl: '#/',
+      category: 'fullstack',
+      featured: true,
+      solution: 'A single Express server serves both the API and the Vite-built SPA. The CMS is JWT-cookie protected with constant-time credential checks and a brute-force limiter. Content lives in Supabase (one row, JSONB column) and is mirrored to database.json locally; every file write is atomic (temp file + rename) and gated by a write queue, so concurrent reads never see partial JSON. A test suite locks down the auth, upload, and CRUD behavior.',
+      subtitle: 'React 19 SPA + Express API + Supabase persistence',
+      githubUrl: 'https://github.com/Azanalam',
+      published: true,
+      tradeoffs: [
+        { title: 'Cache vs. consistency', choice: 'Local JSON cache with compare-before-write', reason: 'Keeps the site fast and offline-tolerant; the cache only rewrites when content actually changed, killing the reload loop.' },
+        { title: 'One JSONB row vs. relational tables', choice: 'Single document per portfolio', reason: 'Simplest possible CMS architecture for a personal site; the entire site updates in one transaction.' }
+      ],
+      challenges: [
+        { title: 'Hot-reload loop from cache writes', description: 'Rewriting database.json on every read triggered Vite full-page reloads in development, which re-triggered fetches — an infinite loop.' },
+        { title: 'Corruption under concurrent writes', description: 'Two writers racing on a single file produced truncated JSON that crashed the server on startup.' }
+      ],
+      description: 'The site you are viewing: a production portfolio platform with a secure admin CMS, media uploads, automated tests, and a crash-safe local cache layer.',
+      performance: [
+        { after: 'Single document fetch', before: 'Multiple endpoints', metric: 'API round trip', technique: 'One /api/portfolio payload powers every view' },
+        { after: 'Only on content change', before: 'On every read', metric: 'Cache writes', technique: 'Content comparison before atomic write' }
+      ],
+      architecture: 'React 19 (Vite) renders hash-routed views from a single /api/portfolio payload. Express exposes public reads plus protected /api/admin/* endpoints. A dbEngine layer owns persistence: read-through cache with content comparison (no writes when nothing changed), upsert to Supabase, and graceful fallback to the local file when the database is unreachable.',
+      accessibility: [
+        'Semantic landmarks and heading hierarchy across all views.',
+        'Keyboard-first navigation: number shortcuts, focus-visible rings, skip-free flows.',
+        'Contrast-safe palette with light/dark theme support.',
+        'ARIA labels on icon-only controls.'
+      ],
+      folderStructure: 'portfolio/\n├── server.ts              # Express API, auth, uploads, rate limiting\n├── src/\n│   ├── entry.ts           # Dev/prod startup\n│   ├── data/dbEngine.ts   # Supabase sync + atomic local cache\n│   ├── views/             # Public + admin views (hash routed)\n│   └── components/admin/  # CMS section managers\n├── supabase/migrations/   # Schema (portfolio JSONB row)\n└── tests/                 # API + UI suites (vitest)',
+      longDescription: 'This portfolio is not a static template — it is a working full-stack product. A React 19 single-page app renders every section from a single JSON document served by an Express API. An authenticated admin CMS edits the same document through hardened endpoints, and a Supabase table with a JSONB column acts as the source of truth, mirrored to a local cache so the site still works during database outages.',
+      problemStatement: 'Portfolios go stale the moment their owner stops editing code, and editing code to change a sentence is how content dies. The site also needed to stay fast, secure, and safe to edit — even when the network to the database drops.'
+    }
+  ],
   services: defaultServices,
   blog: [],
   testimonials: [],
@@ -247,7 +295,7 @@ const initialDB: DBStructure = {
   awards: [],
   media: [],
   layout: {
-    sectionOrder: ['hero', 'projects', 'experience', 'testimonials', 'contact'],
+    sectionOrder: ['hero', 'services', 'projects', 'experience', 'testimonials', 'contact'],
     hiddenSections: []
   },
   resumeUrl: ''
