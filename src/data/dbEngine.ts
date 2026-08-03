@@ -1,6 +1,8 @@
 ﻿import fs from 'fs';
 import path from 'path';
+import * as wsModule from 'ws';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import type { WebSocketLikeConstructor } from '@supabase/realtime-js';
 import {
   Project,
   Experience,
@@ -323,8 +325,16 @@ function getSupabase(): SupabaseClient | null {
   }
 
   try {
+    // @supabase/supabase-js instantiates a RealtimeClient at startup, which
+    // requires a WebSocket implementation. Node 22+ ships a native one; on
+    // older Node (e.g. Railway's default Node 20) fall back to the `ws` package.
+    const NativeWebSocket = (globalThis as { WebSocket?: WebSocketLikeConstructor }).WebSocket;
+    const WsTransport = (wsModule as { default?: WebSocketLikeConstructor }).default ?? (wsModule as unknown as WebSocketLikeConstructor);
+    const transport: WebSocketLikeConstructor = NativeWebSocket ?? WsTransport;
+
     supabaseInstance = createClient(url, serviceKey, {
       auth: { persistSession: false, autoRefreshToken: false },
+      realtime: { transport },
     });
     console.log('Supabase client initialized.');
     return supabaseInstance;
