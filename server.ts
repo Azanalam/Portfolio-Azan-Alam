@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import { Resend } from 'resend';
 import { createServer as createViteServer } from 'vite';
-import { readDB, writeDB } from './src/data/dbEngine';
+import { readDB, writeDB, getStorageSource } from './src/data/dbEngine';
 
 dotenv.config();
 
@@ -126,7 +126,8 @@ const requireAdmin = (req: any, res: any, next: any) => {
 app.get('/api/portfolio', async (req, res) => {
   try {
     const db = await readDB();
-    res.json(db);
+    const dataSource = getStorageSource();
+    res.json({ ...db, dataSource });
   } catch (err) {
     res.status(500).json({ error: 'Failed to read portfolio database.' });
   }
@@ -624,6 +625,8 @@ app.use((err: any, req: any, res: any, next: any) => {
 // CLIENT ROUTING & DEV SERVER MIDDLEWARE
 // ==========================================
 async function startServer() {
+  const supabaseConfigured = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  console.log(`[boot] NODE_ENV=${NODE_ENV} storage=${supabaseConfigured ? 'supabase' : 'local-file'} port=${PORT}`);
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
       server: { middlewareMode: true },

@@ -305,6 +305,13 @@ const initialDB: DBStructure = {
 // for any other role. Falls back to local file storage when credentials are absent.
 let supabaseInstance: SupabaseClient | null = null;
 
+// Diagnoses which storage path served the last read (exposed via the public API).
+export type StorageSource = 'local-file' | 'supabase' | 'supabase-seeded' | 'supabase-fallback';
+let storageSource: StorageSource = 'local-file';
+export function getStorageSource(): StorageSource {
+  return storageSource;
+}
+
 function getSupabase(): SupabaseClient | null {
   if (supabaseInstance) return supabaseInstance;
 
@@ -397,6 +404,7 @@ export async function readDB(): Promise<DBStructure> {
 
   const supabase = getSupabase();
   if (!supabase) {
+    storageSource = 'local-file';
     return mergeWithInitial(localDb);
   }
 
@@ -412,6 +420,7 @@ export async function readDB(): Promise<DBStructure> {
 
     if (data) {
       const remoteData = data.data as DBStructure;
+      storageSource = 'supabase';
       // Sync the local cache only when the content actually changed.
       // (The dev watcher triggers a page reload on any file change, so we
       // must not rewrite this file on every read.)
@@ -427,6 +436,7 @@ export async function readDB(): Promise<DBStructure> {
       return mergeWithInitial(remoteData);
     } else {
       // 3. Row does not exist in Supabase (first start) -> seed it
+      storageSource = 'supabase-seeded';
       console.log('No portfolio row found in Supabase. Seeding with local database...');
       const { error: insertError } = await supabase
         .from('portfolio')
@@ -436,6 +446,7 @@ export async function readDB(): Promise<DBStructure> {
     }
   } catch (err) {
     console.error('Error reading from Supabase, falling back to local DB:', err);
+    storageSource = 'supabase-fallback';
     return mergeWithInitial(localDb);
   }
 }

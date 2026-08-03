@@ -7,6 +7,7 @@ import { app } from '../server';
 vi.mock('../src/data/dbEngine', () => ({
   readDB: vi.fn(),
   writeDB: vi.fn(),
+  getStorageSource: vi.fn(() => 'local-file'),
 }));
 
 import { readDB, writeDB } from '../src/data/dbEngine';
