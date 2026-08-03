@@ -131,7 +131,7 @@ export default function Projects({ onNavigate }: ProjectsProps) {
               className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500 cursor-pointer ${
                 selectedCategory === cat.value
                   ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
-                  : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
+                  : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--line-strong)'
               }`}
             >
               {cat.label}

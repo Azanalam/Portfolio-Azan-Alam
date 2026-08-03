@@ -323,7 +323,7 @@ export default function Skills() {
             className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-150 flex items-center gap-2 cursor-pointer ${
               activeTab === 'topology'
                 ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
-                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
+                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--line-strong)'
             }`}
           >
             <Network className="h-3 w-3" />
@@ -336,7 +336,7 @@ export default function Skills() {
             className={`px-4 py-2 text-[10px] font-mono font-bold tracking-tight uppercase rounded-md border transition-all duration-150 flex items-center gap-2 cursor-pointer ${
               activeTab === 'matrix'
                 ? 'bg-(--cta-bg) text-(--cta-fg) border-white shadow-sm'
-                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--text-faint)'
+                : 'bg-(--surface-3) text-(--text-mid) border-(--line-strong) hover:text-(--text-1) hover:border-(--line-strong)'
             }`}
           >
             <LayoutGrid className="h-3 w-3" />
