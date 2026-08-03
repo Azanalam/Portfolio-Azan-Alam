@@ -13,7 +13,7 @@ import { readDB, writeDB } from './src/data/dbEngine';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const JWT_SECRET = process.env.JWT_SECRET || 'azan-biryani-secret-key-1337-3301';
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'Azanalam';

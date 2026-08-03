@@ -209,7 +209,12 @@ describe('rate limiting', () => {
 describe('contact submissions', () => {
   const validPayload = { name: 'Jane Doe', email: 'jane@example.com', subject: 'Hiring', message: 'I would like to discuss a project with you.' };
 
+  beforeEach(() => {
+    vi.stubEnv('RESEND_API_KEY', '');
+  });
+
   afterAll(() => {
+    vi.unstubAllEnvs();
     fs.rmSync(path.join(process.cwd(), 'data', 'inquiries.json'), { force: true });
   });
 
